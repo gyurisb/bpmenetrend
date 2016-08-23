@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+  <Identity Name="41411GyurisBence.BPMenetrendbeta" Publisher="CN=DE134140-7914-4B28-AF2F-0B6291953934" Version="1.1.0.14" />
+  <mp:PhoneIdentity PhoneProductId="88c7c60d-ab09-4d9c-8e1c-d3caa8ce8ae6" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <!--original: <mp:PhoneIdentity PhoneProductId="4138a11a-78b7-4914-bcd6-b301a7d369f5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />-->
+  <Properties>
+    <DisplayName>BP Menetrend beta</DisplayName>
+    <PublisherDisplayName>Global City Transit</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.1</OSMinVersion>
+    <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="hu" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CityTransitApp.WindowsPhone.App">
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="CityTransitBgTaskCS.AppBackgroundTask">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+      <m3:VisualElements DisplayName="Bp Menetrend beta" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="CityTransitApp.WindowsPhone" ForegroundText="light" BackgroundColor="transparent" ToastCapable="true">
+        <m3:DefaultTile Square71x71Logo="Assets\Square71x71Logo.png">
+          <m3:ShowNameOnTiles>
+            <m3:ShowOn Tile="square150x150Logo" />
+          </m3:ShowNameOnTiles>
+        </m3:DefaultTile>
+        <m3:SplashScreen Image="Assets/SplashScreen.png" />
+      </m3:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClientServer" />
+    <DeviceCapability Name="location" />
+  </Capabilities>
+</Package>

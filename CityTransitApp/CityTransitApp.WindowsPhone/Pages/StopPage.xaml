@@ -1,0 +1,127 @@
+﻿<Page
+    x:Class="CityTransitApp.Pages.StopPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:effects="using:CityTransitElements.Effects"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Light">
+    <!-- fontsize converted -->
+
+
+    <Page.BottomAppBar>
+        <CommandBar Foreground="{StaticResource AppMenuForegroundBrush}" Background="{StaticResource AppMenuBackgroundBrush}" ClosedDisplayMode="Minimal">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="HelpLabel" Click="HelpMenuItem_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Page.Resources>
+        <local:BottomMarginConverter x:Key="BottomMarginConverter"/>
+        <CollectionViewSource x:Key="src" IsSourceGrouped="True" />
+        <DataTemplate x:Key="StopGroupTemplate">
+            <Border Padding="0,7" Background="WhiteSmoke" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,3" Tapped="StopHeader_Tap" effects:RotateEffect.IsEnabled="true" >
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Stop.Name, FallbackValue='Megálló neve'}" TextWrapping="Wrap" Margin="9,4,0,4" FontSize="31"/>
+                        <TextBlock VerticalAlignment="Bottom" Text="&#xf193;" FontFamily="/Assets/FontAwesome.otf#FontAwesome" Grid.Column="1" Margin="4,4,4,8" FontSize="29" Visibility="{Binding IsWheelchairVisible, Converter={StaticResource VisiblityConverter}}"/>
+                        <TextBlock VerticalAlignment="Bottom" Text="&#xf041;" FontFamily="/Assets/FontAwesome.otf#FontAwesome" Grid.Column="2" Margin="4,4,8,8" FontSize="29"/>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding IsTransferVisible, Converter={StaticResource VisiblityConverter}}">
+                        <TextBlock x:Uid="StopTransfersLabel" Margin="9,4,10,4" FontSize="24" FontWeight="Light" VerticalAlignment="Bottom" Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{Binding TimeText}" Margin="0,4" FontSize="25" FontWeight="Light" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding IsDistanceVisible, Converter={StaticResource VisiblityConverter}}">
+                        <!--<TextBlock x:Uid="StopDistance" TextWrapping="Wrap" Margin="9,4,0,4" FontSize="24" Foreground="#FF727272" VerticalAlignment="Center"/>-->
+                        <TextBlock Text="{Binding NearDistance}" Margin="9,4,0,4" FontSize="25" FontWeight="Light" Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <TextBlock x:Uid="AppDistanceUnit" Margin="6,4,8,4" FontSize="24" VerticalAlignment="Center" FontWeight="Light" Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{Binding NearDirection}" Margin="0,4" FontSize="25" FontWeight="Light" Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <TextBlock Text=" (" Margin="0,4" FontSize="24" VerticalAlignment="Center" FontWeight="Light" Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{Binding NearWalkingtime}" Margin="0,4" FontSize="25" FontWeight="Light" Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <TextBlock x:Uid="StopMinute" Margin="10,4,0,4" FontSize="24" VerticalAlignment="Center" FontWeight="Light" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="RouteTemplate">
+            <Grid Background="White" effects:ColoringEffect.ApplyOnTapped="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Text="0" FontSize="25" Foreground="Transparent" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <Border Background="{Binding RouteGroup.T.BgColorBrush}" BorderThickness="0,0,2,0" BorderBrush="{StaticResource AppBorderBrush}"
+                            Width="{Binding RouteGroup.Name, Converter={StaticResource WidthConverter}, ConverterParameter='21-58'}" Margin="0,0,8,0" >
+                        <TextBlock Text="{Binding RouteGroup.T.ShortName}" Foreground="{Binding RouteGroup.T.FontColorBrush}" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   FontSize="{Binding RouteGroup.Name, Converter={StaticResource FontConverter}, ConverterParameter=25}"/>
+                    </Border>
+                    <Border Grid.Column="1" Visibility="{Binding RouteGroup.T.LongNameVisiblity}">
+                        <TextBlock FontSize="20" Text="{Binding RouteGroup.T.LongName}" Foreground="{Binding RouteGroup.T.MainColorBrush}" FontWeight="Bold" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </Border>
+                </StackPanel>
+                <Border Grid.Column="1">
+                    <TextBlock Text="{Binding Name}" FontSize="20" Margin="0,4" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </Border>
+                <Border Grid.Column="2" BorderThickness="2,0,0,0" BorderBrush="{StaticResource AppBorderBrush}" Width="58">
+                    <TextBlock Text="{Binding NextTimeText}" Visibility="{Binding IsTimeVisible, Mode=OneWay, Converter={StaticResource VisiblityConverter}}" FontSize="20" Margin="8,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="FooterTemplate">
+            <StackPanel>
+                <Border BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,2,0,0"/>
+                <Border Height="60" Visibility="{Binding IsSeparatorVisible, Converter={StaticResource VisiblityConverter}}"/>
+                <TextBlock Visibility="{Binding IsBtnVisible, Converter={StaticResource VisiblityConverter}}" x:Uid="StopTransfersCategory" FontSize="23" Foreground="#FF232323" FontWeight="Bold" Margin="8,25,0,25" TextWrapping="Wrap"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="ContentListView" Grid.Row="1"
+        	SelectionChanged="ContentListView_SelectionChanged"
+            ItemsSource="{Binding Source={StaticResource src}}"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+            Margin="{Binding ContentListBottomMargin, FallbackValue='0,0,0,0', Mode=OneWay, Converter={StaticResource BottomMarginConverter}}"
+            Foreground="{StaticResource AppForegroundBrush}"
+            Style="{StaticResource StretchListStyle}">
+            <ListView.GroupStyle>
+                <GroupStyle HeaderTemplate="{StaticResource StopGroupTemplate}">
+                    <GroupStyle.HeaderContainerStyle>
+                        <Style TargetType="ListViewHeaderItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </GroupStyle.HeaderContainerStyle>
+                </GroupStyle>
+            </ListView.GroupStyle>
+            <ListView.ItemTemplateSelector>
+                <local:RouteListTemplateSelector NormalItemTemplate="{StaticResource RouteTemplate}" FooterItemTemplate="{StaticResource FooterTemplate}" />
+            </ListView.ItemTemplateSelector>
+            <ListView.Footer>
+                <StackPanel>
+                    <Border Height="85" x:Name="BottomSpaceing" Visibility="{Binding BottomSpacing, Converter={StaticResource VisiblityConverter}, Mode=OneWay}">
+                        <StackPanel x:Name="ProgressBar" Visibility="{Binding InProgress, Converter={StaticResource VisiblityConverter}, Mode=OneWay}" VerticalAlignment="Center">
+                            <ProgressBar Grid.Row="0" Height="8" IsIndeterminate="True" Margin="0,17,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <TextBlock x:Uid="StopNoTransfers" FontSize="21" Margin="8,-102,8,8" x:Name="ContentListNoTransfers" Visibility="{Binding NoTransfer, Converter={StaticResource VisiblityConverter}, Mode=OneWay}" TextWrapping="Wrap"/>
+                </StackPanel>
+            </ListView.Footer>
+        </ListView>
+    </Grid>
+</Page>

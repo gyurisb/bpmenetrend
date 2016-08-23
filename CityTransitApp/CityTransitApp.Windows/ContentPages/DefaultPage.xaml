@@ -1,0 +1,156 @@
+﻿<Page
+    x:Class="CityTransitApp.ContentPages.DefaultPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.ContentPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:parts="using:CityTransitApp.CityTransitElements.PageParts"
+    xmlns:base="using:CityTransitApp.CityTransitElements.BaseElements"
+    xmlns:base_d="using:CityTransitApp.BaseElements"
+    xmlns:elements="using:CityTransitApp.CityTransitElements.PageElements"
+    xmlns:map="using:MapControl"
+    RequestedTheme="Light"
+    mc:Ignorable="d">
+
+    <ScrollViewer x:Name="ContentScrollViewer" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled" HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Enabled" Background="White">
+        <Grid Margin="0,0,30,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ScrollViewer Margin="30,15,0,30" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                <Border Padding="20" Background="#FFDEDEDE" BorderThickness="0" BorderBrush="Gray">
+                    <StackPanel>
+                        <TextBlock FontSize="27" Text="ÚTVONALTERVEZÉS" FontWeight="Bold" Margin="0,0,0,12"/>
+                        <TextBlock Text="kiindulási hely" Margin="10,30,0,3" Style="{ThemeResource GroupHeaderTextStyle}"/>
+                        <base:AutoCompleteBox x:Name="SourceBox"/>
+                        <TextBlock Text="cél" Margin="10,30,0,3" Style="{ThemeResource GroupHeaderTextStyle}"/>
+                        <base:AutoCompleteBox x:Name="DestBox"/>
+                        <TextBlock Text="időpont" Margin="10,30,0,3" Style="{ThemeResource GroupHeaderTextStyle}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <ComboBox x:Name="TypeBox" SelectedIndex="0" Margin="0,0,5,0" Grid.Column="0">
+                                <ComboBoxItem Content="indulás"/>
+                                <ComboBoxItem Content="érkezés"/>
+                            </ComboBox>
+                            <!--<ComboBox x:Name="DateBox" Grid.Column="1" Margin="0,0,5,0">
+                                <FlyoutBase.AttachedFlyout>
+                                    <Flyout>
+                                        <base_d:Calendar Margin="-10" />
+                                    </Flyout>
+                                </FlyoutBase.AttachedFlyout>
+                            </ComboBox>-->
+                            <Button x:Name="DateBox" Grid.Column="1" Margin="-3,-3,2,-3" BorderBrush="#45000000" BorderThickness="2" Background="#CCFFFFFF" Click="DateBox_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="8,0" VerticalAlignment="Stretch" FontWeight="Normal">
+                                <TextBlock x:Name="DateText" Text="ma" FontSize="14.667" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <FlyoutBase.AttachedFlyout> 
+                                    <Flyout x:Name="CalendarFlyout">
+                                        <base_d:Calendar Margin="-10" DateSelected="Calendar_DateSelected"/>
+                                    </Flyout>
+                                </FlyoutBase.AttachedFlyout>
+                            </Button>
+                            <ComboBox x:Name="HourBox" Margin="0,0,5,0" Grid.Column="2"/>
+                            <ComboBox x:Name="MinuteBox" Margin="0" Grid.Column="3"/>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0"/>
+                        <Grid PointerPressed="SpecialOptionsLabel_Tapped" Margin="0,30,0,0">
+                            <TextBlock TextWrapping="Wrap" Text="SPECIÁLIS" FontSize="27" Foreground="Black" FontWeight="Bold"/>
+                            <TextBlock x:Name="SpecialOptionsArrow" HorizontalAlignment="Right" TextWrapping="Wrap" Text="&#xf104;" VerticalAlignment="Top" FontFamily="ms-appx:/Assets/FontAwesome.otf#FontAwesome" FontSize="25" Foreground="Black"/>
+                        </Grid>
+                        <StackPanel Orientation="Vertical" x:Name="SpecialOptionsPanel" Visibility="Collapsed">
+                            <parts:PlanSettingsPart />
+                        </StackPanel>
+                        <Button Click="PlanBtn_Click" Content="Tervezés" FontSize="20" HorizontalAlignment="Stretch" Margin="0,30,0,5" BorderThickness="0" TabIndex="0"/>
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
+            <Grid Grid.Column="1" Margin="30,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Background="DarkGray" Height="85" Width="85" Margin="5,15,0,15" HorizontalAlignment="Left" ToolTipService.ToolTip="Kedvencek">
+                    <SymbolIcon Symbol="Favorite" Foreground="Black"/>
+                </Border>
+                <GridView ItemsSource="{Binding Favorites}" SelectionMode="None" Grid.Row="1">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <elements:RouteStopPanel NumberWidth="85" Height="85" CornerRadius="0" Holding="RouteStopPanel_Holding" Width="500" Tapped="Favorite_Tapped" RightTapped="RouteStopPanel_RightTapped">
+                                <FlyoutBase.AttachedFlyout>
+                                    <MenuFlyout x:Name="ContextMenu" >
+                                        <MenuFlyoutItem 
+                                            x:Uid="MainContextRemove"
+        					                x:Name="MainContextRemove"
+        					                Click="RemoveFavorites_Click"/>
+                                        <MenuFlyoutItem
+                                            x:Uid="MainContextUp"
+        					                Click="FavUp_Click"/>
+                                        <MenuFlyoutItem
+                                            x:Uid="MainContextDown"
+        					                Click="FavDown_Click"/>
+                                    </MenuFlyout>
+                                </FlyoutBase.AttachedFlyout>
+                            </elements:RouteStopPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </Grid>
+            <Grid Grid.Column="2" Margin="30,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Background="DarkGray" Height="85" Width="85" Margin="5,15,0,15" HorizontalAlignment="Left" ToolTipService.ToolTip="Előzmények">
+                    <SymbolIcon Symbol="Clock" Foreground="Black"/>
+                </Border>
+                <GridView ItemsSource="{Binding RecentHistory, Mode=OneWay}" SelectionMode="None" Grid.Row="1">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{Binding T.BgColorBrush}" 
+                                BorderBrush="{StaticResource AppBorderBrush}" 
+                                Padding="0" 
+                                Width="85" Height="85"
+                                Tapped="History_Tapped">
+                                <TextBlock Text="{Binding Name}" 
+                                            Foreground="{Binding T.FontColorBrush}" 
+                                            FontSize="{Binding Name, Converter={StaticResource FontConverter}, ConverterParameter=25}"
+                                            TextWrapping="Wrap"
+                                            TextAlignment="Center"
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center"/>
+                            </Border>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </Grid>
+            <Grid Grid.Column="3" Width="1024" Margin="30,0,30,30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Background="DarkGray" Height="85" Width="85" Margin="5,15,0,18" HorizontalAlignment="Left" ToolTipService.ToolTip="Térképes kereső">
+                    <SymbolIcon Symbol="Map" Foreground="Black"/>
+                </Border>
+                <Grid Grid.Row="1" PointerEntered="map_PointerEntered" PointerExited="map_PointerExited" Margin="5,0,0,0">
+                    <map:Map x:Name="Map" MinZoomLevel="2" MaxZoomLevel="18" ManipulationMode="All">
+                        <map:Map.TileLayer>
+                            <map:TileLayer SourceName="MapQuest OpenStreetMap"
+                           Description="Maps © [MapQuest](http://www.mapquest.com/), Data © [OpenStreetMap Contributors](http://www.openstreetmap.org/copyright)">
+                                <map:TileSource UriFormat="http://otile{n}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png"/>
+                            </map:TileLayer>
+                        </map:Map.TileLayer>
+                    </map:Map>
+                    <Canvas x:Name="MapCanvas" Background="Transparent"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

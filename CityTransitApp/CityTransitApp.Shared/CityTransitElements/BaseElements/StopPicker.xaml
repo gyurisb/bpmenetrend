@@ -1,0 +1,33 @@
+﻿<UserControl
+    x:Class="CityTransitApp.CityTransitElements.BaseElements.StopPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.CityTransitElements.BaseElements"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:base="using:CityTransitApp.CityTransitElements.BaseElements"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    
+    <UserControl.Resources>
+        <DataTemplate x:Key="MessageBoxTemplate">
+            <StackPanel Loaded="TextBox_Loaded">
+                <ProgressBar IsIndeterminate="True"/>
+                <base:AutoCompleteBox Background="{StaticResource AppFieldBrush}" 
+                                      Foreground="{StaticResource AppForegroundBrush}" 
+                                      SelectionChanged="TextBox_Selected" 
+                                      LostFocus="TextBox_LostFocus"/>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Border x:Name="Root" Background="{StaticResource AppFieldBrush}" BorderBrush="{StaticResource AppHeaderBackgroundBrush}" BorderThickness="0,0,0,2" Tapped="Base_Tapped">
+        <TextBlock x:Name="BaseText" 
+                   x:Uid="StopPickerChoose" 
+                   VerticalAlignment="Center" 
+                   Margin="8,8,0,8" 
+                   FontSize="20" 
+                   Foreground="{StaticResource AppFieldForegroundBrush2}"/>
+    </Border>
+</UserControl>

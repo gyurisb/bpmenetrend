@@ -1,0 +1,117 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CityTransitApp.WPSilverlight.Dialogs.DateTimePickerDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:p ="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SwivelTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SwivelTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Check.png" Text="OK" Click="Ok_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Cancel.png" Text="mégsem" Click="Cancel_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="77*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="DepartureBorder" Background="{StaticResource PhoneAccentBrush}" Margin="10,20,10,5" Tap="DepartureBorder_Tap">
+                <TextBlock Text="{Binding Path=LocalizedResources.DateTimeDeparture, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,0"/>
+            </Border>
+            <Border x:Name="ArriveBorder" Grid.Column="1" Background="{StaticResource PhoneChromeBrush}" Margin="10,20,10,5" Tap="ArriveBorder_Tap">
+                <TextBlock Text="{Binding Path=LocalizedResources.DateTimeArrive, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center"/>
+            </Border>
+        </Grid>
+        <p:LoopingSelector
+                x:Name="DaySelector"
+                Grid.Column="0" Grid.Row="1"
+                ItemMargin="6" Margin="0">
+            <p:LoopingSelector.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <TextBlock Text="{Binding Header}" FontSize="28" VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding Body}" FontSize="42" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                    </Grid>
+                </DataTemplate>
+            </p:LoopingSelector.ItemTemplate>
+        </p:LoopingSelector>
+        <p:LoopingSelector
+                x:Name="HourSelector"
+                Grid.Column="1" Grid.Row="1"
+                ItemMargin="6" Margin="0">
+            <p:LoopingSelector.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <TextBlock Text="{Binding}" FontSize="42" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold"/>
+                    </Grid>
+                </DataTemplate>
+            </p:LoopingSelector.ItemTemplate>
+        </p:LoopingSelector>
+        <p:LoopingSelector
+                x:Name="MinuteSelector"
+                Grid.Column="2" Grid.Row="1"
+                ItemMargin="6" Margin="0">
+            <p:LoopingSelector.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <TextBlock Text="{Binding}" FontSize="42" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold"/>
+                    </Grid>
+                </DataTemplate>
+            </p:LoopingSelector.ItemTemplate>
+        </p:LoopingSelector>
+        <p:LoopingSelector
+            x:Name="AmPmSelector"
+            Grid.Column="3" Grid.Row="1"
+            ItemMargin="6"
+            Width="100"
+            Visibility="Collapsed">
+            <p:LoopingSelector.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <TextBlock Text="{Binding}" FontSize="36" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold"/>
+                    </Grid>
+                </DataTemplate>
+            </p:LoopingSelector.ItemTemplate>
+        </p:LoopingSelector>
+    </Grid>
+
+</phone:PhoneApplicationPage>

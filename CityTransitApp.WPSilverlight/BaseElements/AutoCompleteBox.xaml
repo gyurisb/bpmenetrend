@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="CityTransitApp.WPSilverlight.BaseElements.AutoCompleteBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="TextBox" TextChanged="TextBox_TextChanged"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center" Foreground="#FF9B9B9B" Visibility="Collapsed">
+            <Run x:Name="VisibleProgress"/>
+            <Run Text="/"/>
+            <Run x:Name="TotalProgress" />
+        </TextBlock>
+        <Border Grid.Row="1" x:Name="ResultBorder" Visibility="Collapsed">
+            <Border BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="3" Margin="12,-14,12,0" Background="White" VerticalAlignment="Top">
+                <phone:LongListSelector x:Name="ResultList" SelectionChanged="LongListSelector_SelectionChanged" Foreground="Black" Margin="0">
+                    <phone:LongListSelector.ListHeader>
+                        <Border Height="10"/>
+                    </phone:LongListSelector.ListHeader>
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Foreground="Black" FontSize="25" Margin="0"/>
+                                <TextBlock Text="{Binding Footer}" TextWrapping="Wrap" Foreground="#FFB8B8B8" FontSize="25" Margin="0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                    <phone:LongListSelector.ListFooter>
+                        <Border Height="10"/>
+                    </phone:LongListSelector.ListFooter>
+                </phone:LongListSelector>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>

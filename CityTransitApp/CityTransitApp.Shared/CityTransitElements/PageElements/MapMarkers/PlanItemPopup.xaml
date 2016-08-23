@@ -1,0 +1,29 @@
+﻿<UserControl
+    x:Class="CityTransitApp.CityTransitElements.PageElements.MapMarkers.PlanItemPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.CityTransitElements.PageElements.MapMarkers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontSize="17"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Border x:Name="LayoutRoot" Padding="8" CornerRadius="10" BorderThickness="3" Margin="0,11" Background="{Binding Route.RouteGroup.T.SecondaryColorBrush}" BorderBrush="{Binding Route.RouteGroup.T.MainColorBrush}">
+        <StackPanel>
+            <TextBlock Text="{Binding CurrentTime}" FontWeight="Bold" FontSize="21"/>
+            <TextBlock TextWrapping="Wrap" FontSize="19">
+                <Run x:Uid="PlanItemAt"/>
+                <Run Text="{Binding Stop.Name}" FontWeight="Bold"/>
+            </TextBlock>
+            <TextBlock Text="{Binding HelpLine1}" FontSize="17" TextWrapping="Wrap"/>
+            <TextBlock TextWrapping="Wrap" FontSize="19">
+                <Run Text="{Binding Route.RouteGroup.Name}" FontWeight="Bold"/>
+                <Run x:Uid="PlanItemTo"/>
+                <Run Text="{Binding Route.Name}" FontWeight="Bold"/>
+            </TextBlock>
+            <TextBlock Text="{Binding HelpLine2}" FontSize="17" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppBarButtonText" xml:space="preserve">
+    <value>add</value>
+  </data>
+  <data name="AppBarMenuItemText" xml:space="preserve">
+    <value>Menu Item</value>
+  </data>
+  <data name="AppDistanceUnit" xml:space="preserve">
+    <value>ft</value>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>BP SCHEDULE</value>
+  </data>
+  <data name="AppLocationConsent" xml:space="preserve">
+    <value>This app accesses your phone's location to show nearby stops on map and plan trips. Do you allow location services for the app?</value>
+  </data>
+  <data name="AppLocationConsentDisable" xml:space="preserve">
+    <value>Don't allow</value>
+  </data>
+  <data name="AppLocationConsentEnable" xml:space="preserve">
+    <value>Allow</value>
+  </data>
+  <data name="AppLocationConsentTitle" xml:space="preserve">
+    <value>Location services</value>
+  </data>
+  <data name="CardinalEast" xml:space="preserve">
+    <value>East</value>
+  </data>
+  <data name="CardinalNorth" xml:space="preserve">
+    <value>North</value>
+  </data>
+  <data name="CardinalNorthEast" xml:space="preserve">
+    <value>North-East</value>
+  </data>
+  <data name="CardinalNorthWest" xml:space="preserve">
+    <value>North-West</value>
+  </data>
+  <data name="CardinalSouth" xml:space="preserve">
+    <value>South</value>
+  </data>
+  <data name="CardinalSouthEast" xml:space="preserve">
+    <value>South-East</value>
+  </data>
+  <data name="CardinalSouthWest" xml:space="preserve">
+    <value>South-West</value>
+  </data>
+  <data name="CardinalWest" xml:space="preserve">
+    <value>West</value>
+  </data>
+  <data name="DateTimeArrive" xml:space="preserve">
+    <value>Arrive</value>
+  </data>
+  <data name="DateTimeDeparture" xml:space="preserve">
+    <value>Depart</value>
+  </data>
+  <data name="DateTimeToday" xml:space="preserve">
+    <value>today</value>
+  </data>
+  <data name="DateTimeTomorrow" xml:space="preserve">
+    <value>tomorrow</value>
+  </data>
+  <data name="DownloadDecompress" xml:space="preserve">
+    <value>Decompressing downloaded files!</value>
+  </data>
+  <data name="DownloadLoadDB" xml:space="preserve">
+    <value>Database loading!</value>
+  </data>
+  <data name="DownloadNoAccess" xml:space="preserve">
+    <value>The server is unavailable. Check if you are connected to the network.</value>
+  </data>
+  <data name="DownloadProgress" xml:space="preserve">
+    <value>Downloaded:</value>
+  </data>
+  <data name="DownloadReady" xml:space="preserve">
+    <value>The database is ready!</value>
+  </data>
+  <data name="DownloadWaitDB" xml:space="preserve">
+    <value>Waiting for database loading.</value>
+  </data>
+  <data name="HelpLabel" xml:space="preserve">
+    <value>What is this page?</value>
+  </data>
+  <data name="HelpStop" xml:space="preserve">
+    <value>This page shows departing vehicles from a selected stop/station and from stops nearby.
+On the right you can see how many minutes left until the next vehicle arrives.
+If you tap on a bar of a stop/station you can view it on the map.</value>
+  </data>
+  <data name="HelpTimetable" xml:space="preserve">
+    <value>This page shows the departure times of the selected route from a selected stop/station on a selected day.
+You can see the departure times in the main part of the page grouped by hours.
+If you tap on a departure time you can access the selected trip's own page.
+If you tap on the date (top line) you can choose another day to display.
+If you tap on the route label (second line) the page will show departure times of vehicles traveling in the opposite direction.
+If you tap on the stop label you can choose another stop from the route.</value>
+  </data>
+  <data name="HelpTrip" xml:space="preserve">
+    <value>This page shows the arrival times of a selected trip.
+You can find transfers by clicking on a stop from the list.
+You can select next or previous trips by swiping or selecting it from the top bar.
+Also if you tap on the destination label the page will show the next trip to the opposite direction.</value>
+  </data>
+  <data name="HistorySelectText" xml:space="preserve">
+    <value>Select a destination or a stop.</value>
+  </data>
+  <data name="HistoryStopsLabel" xml:space="preserve">
+    <value>MOST VIEWED</value>
+  </data>
+  <data name="MainContextDown" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="MainContextPin" xml:space="preserve">
+    <value>Pin to start</value>
+  </data>
+  <data name="MainContextRemove" xml:space="preserve">
+    <value>Remove from favorites</value>
+  </data>
+  <data name="MainContextUp" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="MainDownloadDescr" xml:space="preserve">
+    <value>You have to download the schedule database to use the application. Tap to download.</value>
+  </data>
+  <data name="MainDownloadDone" xml:space="preserve">
+    <value>The update is done. You have to restart the application now.</value>
+  </data>
+  <data name="MainDownloadProgress" xml:space="preserve">
+    <value>Download in progress.</value>
+  </data>
+  <data name="MainDownloadTitle" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="MainFavorites" xml:space="preserve">
+    <value>FAVORITES</value>
+  </data>
+  <data name="MainHistory" xml:space="preserve">
+    <value>HISTORY</value>
+  </data>
+  <data name="MainMenuCheckUpdate" xml:space="preserve">
+    <value>search update</value>
+  </data>
+  <data name="MainMenuFilter" xml:space="preserve">
+    <value>planning options</value>
+  </data>
+  <data name="MainMenuMap" xml:space="preserve">
+    <value>on map</value>
+  </data>
+  <data name="MainMenuNear" xml:space="preserve">
+    <value>nearby</value>
+  </data>
+  <data name="MainMenuOfflinePlanning" xml:space="preserve">
+    <value>purchase offline planning</value>
+  </data>
+  <data name="MainMenuSearch" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="MainMenuSettings" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="MainMenuUpdate" xml:space="preserve">
+    <value>update</value>
+  </data>
+  <data name="MainNearest" xml:space="preserve">
+    <value>nearest stop</value>
+  </data>
+  <data name="MainProgressNoInternet" xml:space="preserve">
+    <value>No data connection.</value>
+  </data>
+  <data name="MainProgressNoUpdate" xml:space="preserve">
+    <value>The database is up to date.</value>
+  </data>
+  <data name="MainRecent" xml:space="preserve">
+    <value>RECENTLY VIEWED</value>
+  </data>
+  <data name="MainTabNoFavorites" xml:space="preserve">
+    <value>No favorites.</value>
+  </data>
+  <data name="MainTabPlanning" xml:space="preserve">
+    <value>PLANNING</value>
+  </data>
+  <data name="MainTabSchedules" xml:space="preserve">
+    <value>SCHEDULE</value>
+  </data>
+  <data name="MainTopOutOfDate" xml:space="preserve">
+    <value>The schedule is out of date, update is available.</value>
+  </data>
+  <data name="NearCancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="NearLocationServices" xml:space="preserve">
+    <value>Location services</value>
+  </data>
+  <data name="NearLocButton" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="NearLocDescription" xml:space="preserve">
+    <value>You have to enable location services in settings to use this function.</value>
+  </data>
+  <data name="NearPageDistance" xml:space="preserve">
+    <value>Distance &lt; </value>
+  </data>
+  <data name="NearPageTitle" xml:space="preserve">
+    <value>Nearby stops</value>
+  </data>
+  <data name="NearUnavailable" xml:space="preserve">
+    <value>Service unavailable</value>
+  </data>
+  <data name="NearUnavailableButton" xml:space="preserve">
+    <value>Try again</value>
+  </data>
+  <data name="NearUnavailableDescr" xml:space="preserve">
+    <value>Location services are unavailable, searching for nearby stops is not possible.</value>
+  </data>
+  <data name="PlanDetailsRoute" xml:space="preserve">
+    <value>% ➤ %</value>
+  </data>
+  <data name="PlanDetailsTitle" xml:space="preserve">
+    <value>Route details</value>
+  </data>
+  <data name="PlanDetailsToMap" xml:space="preserve">
+    <value>draw map</value>
+  </data>
+  <data name="PlanDetailsTrip" xml:space="preserve">
+    <value>% stop/|s/</value>
+  </data>
+  <data name="PlanDetailsWait" xml:space="preserve">
+    <value>wait % minute/|s/</value>
+  </data>
+  <data name="PlanDetailsWalk" xml:space="preserve">
+    <value>walk % /foot|feet/</value>
+  </data>
+  <data name="PlaningBtn" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="PlanItemAt" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="PlanItemFinish1" xml:space="preserve">
+    <value>take off from line</value>
+  </data>
+  <data name="PlanItemFinish2" xml:space="preserve">
+    <value>and arrive at your destination</value>
+  </data>
+  <data name="PlanItemMidFinish2" xml:space="preserve">
+    <value>then walk to the transfer</value>
+  </data>
+  <data name="PlanItemMidStart1" xml:space="preserve">
+    <value>transfer to the folllowing vehicle</value>
+  </data>
+  <data name="PlanItemStart1" xml:space="preserve">
+    <value>take the following vehicle</value>
+  </data>
+  <data name="PlanItemStart2" xml:space="preserve">
+    <value>and travel % stops</value>
+  </data>
+  <data name="PlanItemTo" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="PlanMenuMap" xml:space="preserve">
+    <value>map !</value>
+  </data>
+  <data name="PlanningError" xml:space="preserve">
+    <value>The planning has failed, please try again.</value>
+  </data>
+  <data name="PlanningFreeVersion" xml:space="preserve">
+    <value>Az útvonaltervezés az alkalmazás ezen verziójában nem elérhető.</value>
+  </data>
+  <data name="PlanningInProgress" xml:space="preserve">
+    <value>You cannot start a new planning while the previous planning is in progress.</value>
+  </data>
+  <data name="PlanningNoAccess" xml:space="preserve">
+    <value>Nincs internetkapcsolat. Jelenleg az útvonaltervező funkció csak aktív interneteléréssel működik. Ha szeretne internetkapcsolat nélkül is útvonalat tervezni, akkor később koppintson a menüben az 'Offline útvonaltervezés' menüpontra és vásárolja meg a funkciót.</value>
+  </data>
+  <data name="PlanningNoResult" xml:space="preserve">
+    <value>No route found between selected stops.</value>
+  </data>
+  <data name="PlanningSourceEmpty" xml:space="preserve">
+    <value>You have to select a start stop.</value>
+  </data>
+  <data name="PlanningTargetEmpty" xml:space="preserve">
+    <value>You have to select a destination stop.</value>
+  </data>
+  <data name="PlanningTimeLabel" xml:space="preserve">
+    <value>Planning complete</value>
+  </data>
+  <data name="PlanningTopHeaderLine1" xml:space="preserve">
+    <value>depart at </value>
+  </data>
+  <data name="PlanningTopHeaderLine2" xml:space="preserve">
+    <value>, arrive at </value>
+  </data>
+  <data name="PlanningTrialExpired" xml:space="preserve">
+    <value>Az útvonaltervezés funkció jelenleg nem érhető el, mert Ön alkalmazás próba verzióját használja és a próbaidő lejárt. A funkció használatához vásárolja meg a teljes verziót az Áruházból!</value>
+  </data>
+  <data name="PlanningWalk" xml:space="preserve">
+    <value>Walk</value>
+  </data>
+  <data name="PlanSettingsAspect" xml:space="preserve">
+    <value>The aspects of planning</value>
+  </data>
+  <data name="PlanSettingsCheckedType" xml:space="preserve">
+    <value>You have to select at least one aspect.</value>
+  </data>
+  <data name="PlanSettingsDisabled" xml:space="preserve">
+    <value>Barrier-free settings</value>
+  </data>
+  <data name="PlanSettingsDisabledStopError" xml:space="preserve">
+    <value>A BKK weboldalán kiadott hivatalos adatbázisban sajnos hiányosak az akadálymentes megállókkal kapcsolatos információk, ezért nem javasolt ennek a feltételnek a bejelölése, mert a tervezés valószínűleg nem fog útvonalat találni. Továbbra is be szeretné jelölni?</value>
+  </data>
+  <data name="PlanSettingsDisabledStops" xml:space="preserve">
+    <value>Only barrier-free stops</value>
+  </data>
+  <data name="PlanSettingsDisabledVehicles" xml:space="preserve">
+    <value>Only barrier-free vehicles</value>
+  </data>
+  <data name="PlanSettingsFastWalk" xml:space="preserve">
+    <value>fast</value>
+  </data>
+  <data name="PlanSettingsFastWalkValue" xml:space="preserve">
+    <value>6.2 mph</value>
+  </data>
+  <data name="PlanSettingsHelp" xml:space="preserve">
+    <value>The planner will execute planning considering the following aspects. If you check more then more planning will run at the same time, this can result longer planning if your device has few CPU cores.
+The different results will apear in lines, ordered by relevance.</value>
+  </data>
+  <data name="PlanSettingsNormalWalk" xml:space="preserve">
+    <value>normal</value>
+  </data>
+  <data name="PlanSettingsNormalWalkValue" xml:space="preserve">
+    <value>3.1 mph</value>
+  </data>
+  <data name="PlanSettingsPageTitle" xml:space="preserve">
+    <value>plan settings</value>
+  </data>
+  <data name="PlanSettingsSlowWalk" xml:space="preserve">
+    <value>slow</value>
+  </data>
+  <data name="PlanSettingsSlowWalkValue" xml:space="preserve">
+    <value>1.9 mph</value>
+  </data>
+  <data name="PlanSettingsTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="PlanSettingsTransfer" xml:space="preserve">
+    <value>Transfer count</value>
+  </data>
+  <data name="PlanSettingsVehicles" xml:space="preserve">
+    <value>Enabled vehicle types for the result</value>
+  </data>
+  <data name="PlanSettingsWalk" xml:space="preserve">
+    <value>Walking distance</value>
+  </data>
+  <data name="PlanSettingsWalkSpeed" xml:space="preserve">
+    <value>Speed of walking</value>
+  </data>
+  <data name="PlanTimeLabel" xml:space="preserve">
+    <value> minute/|s/</value>
+  </data>
+  <data name="PlanTransferLabel" xml:space="preserve">
+    <value> transfer/|s/</value>
+  </data>
+  <data name="PlanWalkLabel" xml:space="preserve">
+    <value> ft walk</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>en-US</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="RouteMenuCancel" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="RouteMenuOK" xml:space="preserve">
+    <value>done</value>
+  </data>
+  <data name="RoutePanelOutOfService" xml:space="preserve">
+    <value>out of service</value>
+  </data>
+  <data name="RouteStopFromPost" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RouteStopFromPre" xml:space="preserve">
+    <value>from </value>
+  </data>
+  <data name="RouteStopToPost" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RouteStopToPre" xml:space="preserve">
+    <value>to </value>
+  </data>
+  <data name="SearchCatLabel1" xml:space="preserve">
+    <value>Subway</value>
+  </data>
+  <data name="SearchCatLabel2" xml:space="preserve">
+    <value>Rail</value>
+  </data>
+  <data name="SearchCatLabel3" xml:space="preserve">
+    <value>Tram</value>
+  </data>
+  <data name="SearchCatLabel4" xml:space="preserve">
+    <value>Cart</value>
+  </data>
+  <data name="SearchCatLabel5" xml:space="preserve">
+    <value>Bus</value>
+  </data>
+  <data name="SearchCatLabel6" xml:space="preserve">
+    <value>Night bus</value>
+  </data>
+  <data name="SearchDefault" xml:space="preserve">
+    <value>Type a vehicle line or a stop name.</value>
+  </data>
+  <data name="SettingsAutoNear" xml:space="preserve">
+    <value>Automatic check for nearby stops</value>
+  </data>
+  <data name="SettingsAutoNearLabel" xml:space="preserve">
+    <value>If you enable this function the application will use location services each time it starts.</value>
+  </data>
+  <data name="SettingsAutoUpdate" xml:space="preserve">
+    <value>Check updates automatically</value>
+  </data>
+  <data name="SettingsClearConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete search history?</value>
+  </data>
+  <data name="SettingsClearHistory" xml:space="preserve">
+    <value>Delete history</value>
+  </data>
+  <data name="SettingsLocationServices" xml:space="preserve">
+    <value>Location services</value>
+  </data>
+  <data name="SettingsNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="SettingsOff" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="SettingsOn" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="SettingsPageTitle" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="SettingsPerDay" xml:space="preserve">
+    <value>every day</value>
+  </data>
+  <data name="SettingsPerWeek" xml:space="preserve">
+    <value>every week</value>
+  </data>
+  <data name="SettingsPerXDay" xml:space="preserve">
+    <value>every % days</value>
+  </data>
+  <data name="SettingsRestartRequired" xml:space="preserve">
+    <value>The new theme will be displayed after restarting the application.</value>
+  </data>
+  <data name="SettingsTheme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="SettingsUnderline" xml:space="preserve">
+    <value>Underline barrier-free vehicles.</value>
+  </data>
+  <data name="SettingsUnderlineDescr" xml:space="preserve">
+    <value>In the schedule the times for barrier-free vehicles will appear underlined.</value>
+  </data>
+  <data name="SettingsUpdateInterval" xml:space="preserve">
+    <value>Update check frequency</value>
+  </data>
+  <data name="SettingsYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="StopDistance" xml:space="preserve">
+    <value>distance: </value>
+  </data>
+  <data name="StopMapDepartures" xml:space="preserve">
+    <value>departures after %</value>
+  </data>
+  <data name="StopMapDistance" xml:space="preserve">
+    <value>distance is % (% minute/|s/)</value>
+  </data>
+  <data name="StopMapPosition" xml:space="preserve">
+    <value>you arrive here</value>
+  </data>
+  <data name="StopMinute" xml:space="preserve">
+    <value> minutes)</value>
+  </data>
+  <data name="StopNearBtn" xml:space="preserve">
+    <value>near transfers</value>
+  </data>
+  <data name="StopNoTransfers" xml:space="preserve">
+    <value>There are no additional transfers near this stop.</value>
+  </data>
+  <data name="StopPickerChoose" xml:space="preserve">
+    <value>Select a stop!</value>
+  </data>
+  <data name="StopTransfersCategory" xml:space="preserve">
+    <value>NEAR STOPS</value>
+  </data>
+  <data name="StopTransfersLabel" xml:space="preserve">
+    <value>transfers at </value>
+  </data>
+  <data name="StringMinute" xml:space="preserve">
+    <value>minute</value>
+  </data>
+  <data name="StringMinutePl" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="TileAlreadyDone" xml:space="preserve">
+    <value>You have already pinned this.</value>
+  </data>
+  <data name="TimetableChooseStop" xml:space="preserve">
+    <value>Select a stop!</value>
+  </data>
+  <data name="TimetableDirectionPost" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TimetableDirectionPre" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="TimetableFromPost" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TimetableFromPre" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="TimeTableLabelPost" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TimetableMenuAddFavs" xml:space="preserve">
+    <value>add favs</value>
+  </data>
+  <data name="TimetableMenuPin" xml:space="preserve">
+    <value>pin</value>
+  </data>
+  <data name="TimeTableNextDay" xml:space="preserve">
+    <value>Next day</value>
+  </data>
+  <data name="TimeTablePreviousDay" xml:space="preserve">
+    <value>Previous day</value>
+  </data>
+  <data name="TimeTableThisDay" xml:space="preserve">
+    <value>Selected day</value>
+  </data>
+  <data name="TimeTableToday" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="TimeTableTomorrow" xml:space="preserve">
+    <value>Tomorrow</value>
+  </data>
+  <data name="TimeTableYesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="TipAddFavs" xml:space="preserve">
+    <value>Tip: You can add a timetable to your favorites by tapping the icon at the application bar. Next time you will see the timetable on the start page of the application.</value>
+  </data>
+  <data name="TipLiveTile" xml:space="preserve">
+    <value>Tip: To pin a timetable to the start screen tap and hold on the selected item.</value>
+  </data>
+  <data name="TripMenuMap" xml:space="preserve">
+    <value>on map</value>
+  </data>
+  <data name="TripMenuTimetable" xml:space="preserve">
+    <value>timetable</value>
+  </data>
+  <data name="TripStopDistance" xml:space="preserve">
+    <value>stop distance</value>
+  </data>
+  <data name="TripTopButton" xml:space="preserve">
+    <value>→ full timetable</value>
+  </data>
+  <data name="TripTransferDistance" xml:space="preserve">
+    <value>transfer walk distance</value>
+  </data>
+</root>

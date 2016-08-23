@@ -1,0 +1,143 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CityTransitApp.WPSilverlight.StopPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:effects="clr-namespace:CityTransitApp.WPSilverlight.Effects"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:CityTransitApp.WPSilverlight"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Style="{StaticResource AppPageStyle}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="StopGroupTemplate">
+            <Border Padding="0,7" Background="WhiteSmoke" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,3" Tap="StopHeader_Tap" effects:RotateEffect.IsEnabled="true" >
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Stop.Name, FallbackValue='Megálló neve'}" TextWrapping="Wrap" Margin="11,5,0,5" FontSize="36"/>
+                        <TextBlock VerticalAlignment="Bottom" Text="&#xf193;" FontFamily="/CityTransitApp.WPSilverlight;component/Resources/FontAwesome.otf#FontAwesome" Grid.Column="1" Margin="5,5,5,10" FontSize="34" Visibility="{Binding IsWheelchairVisible, Converter={StaticResource VisiblityConverter}}"/>
+                        <TextBlock VerticalAlignment="Bottom" Text="&#xf041;" FontFamily="/CityTransitApp.WPSilverlight;component/Resources/FontAwesome.otf#FontAwesome" Grid.Column="2" Margin="5,5,10,10" FontSize="34"/>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding IsTransferVisible, Converter={StaticResource VisiblityConverter}}">
+                        <TextBlock Text="{Binding Path=LocalizedResources.StopTransfersLabel, Source={StaticResource LocalizedStrings}}" Margin="11,5,0,5" FontSize="28" FontWeight="Light" VerticalAlignment="Bottom"/>
+                        <TextBlock Text="{Binding TimeText, FallbackValue='2014.07.01 10:00'}" Margin="0,5" FontSize="30" FontWeight="Light"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding IsDistanceVisible, Converter={StaticResource VisiblityConverter}}">
+                        <!--<TextBlock Text="{Binding Path=LocalizedResources.StopDistance, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" Margin="11,5,0,5" FontSize="28" Foreground="#FF727272" VerticalAlignment="Center"/>-->
+                        <TextBlock Text="{Binding NearDistance}" Margin="11,5,5,5" FontSize="30" FontWeight="Light"/>
+                        <TextBlock Text="{Binding Path=LocalizedResources.AppDistanceUnit, Source={StaticResource LocalizedStrings}}" Margin="0,5,5,5" FontSize="28" VerticalAlignment="Center" FontWeight="Light"/>
+                        <TextBlock Text="{Binding NearDirection}" Margin="0,5" FontSize="30" FontWeight="Light"/>
+                        <TextBlock Text=" (" Margin="0,5" FontSize="28" VerticalAlignment="Center" FontWeight="Light"/>
+                        <TextBlock Text="{Binding NearWalkingtime}" Margin="0,5" FontSize="30" FontWeight="Light"/>
+                        <TextBlock Text="{Binding Path=LocalizedResources.StopMinute, Source={StaticResource LocalizedStrings}}" Margin="0,5" FontSize="28" VerticalAlignment="Center" FontWeight="Light"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="RouteTemplate">
+            <Grid Background="White" effects:ColoringEffect.ApplyOnTap="true">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Text="0" FontSize="30" Foreground="Transparent" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <Border Background="{Binding RouteGroup.T.BgColorBrush}" BorderThickness="0,0,2,0" BorderBrush="{StaticResource AppBorderBrush}"
+                            Width="{Binding RouteGroup.Name, Converter={StaticResource WidthConverter}, ConverterParameter='25-69'}" Margin="0,0,10,0" >
+                        <TextBlock Text="{Binding RouteGroup.T.ShortName}" Foreground="{Binding RouteGroup.T.FontColorBrush}" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   FontSize="{Binding RouteGroup.Name, Converter={StaticResource FontConverter}, ConverterParameter=30}"/>
+                    </Border>
+                    <Border Grid.Column="1" Visibility="{Binding RouteGroup.T.LongNameVisiblity}">
+                        <TextBlock FontSize="24" Text="{Binding RouteGroup.T.LongName}" Foreground="{Binding RouteGroup.T.MainColorBrush}" FontWeight="Bold" VerticalAlignment="Center" />
+                    </Border>
+                </StackPanel>
+                <Border Grid.Column="1">
+                    <TextBlock Text="{Binding Name}" FontSize="24" Margin="0,5" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </Border>
+                <Border Grid.Column="2" BorderThickness="2,0,0,0" BorderBrush="{StaticResource AppBorderBrush}" Width="69">
+                    <TextBlock Text="{Binding NextTimeText}" Visibility="{Binding IsTimeVisible, Mode=OneWay, Converter={StaticResource VisiblityConverter}}" FontSize="24" Margin="10,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="FooterTemplate">
+            <StackPanel>
+                <Border BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,2,0,0"/>
+                <Border Height="70" Visibility="{Binding IsSeparatorVisible, Converter={StaticResource VisiblityConverter}}"/>
+                <TextBlock Visibility="{Binding IsBtnVisible, Converter={StaticResource VisiblityConverter}}" Text="{Binding Path=LocalizedResources.StopTransfersCategory, Source={StaticResource LocalizedStrings}}" FontSize="27" Foreground="#FF232323" FontWeight="Bold" Margin="10,30,0,30" TextWrapping="Wrap"/>
+            </StackPanel>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Minimized" ForegroundColor="{StaticResource AppMenuForegroundColor}" BackgroundColor="{StaticResource AppMenuBackgroundColor}">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="HelpMenuItem" Text="súgó az oldalhoz" Click="HelpMenuItem_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsIndeterminate="false" IsVisible="True"/>
+    </shell:SystemTray.ProgressIndicator>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <phone:LongListSelector x:Name="ContentListView" Grid.Row="1"
+            ItemsSource="{Binding ItemsSource}"
+            GroupHeaderTemplate="{StaticResource StopGroupTemplate}"
+        	ItemTemplate="{StaticResource RouteTemplate}"
+            GroupFooterTemplate="{StaticResource FooterTemplate}"
+            IsGroupingEnabled="True"
+        	SelectionChanged="ContentListView_SelectionChanged"
+            Style="{StaticResource AppListStyle}" 
+            Foreground="{StaticResource AppForegroundBrush}">
+            <phone:LongListSelector.ListFooter>
+                <StackPanel>
+                    <Border Height="100" Visibility="{Binding BottomSpacing, Converter={StaticResource VisiblityConverter}, Mode=OneWay}">
+                        <StackPanel Visibility="{Binding InProgress, Converter={StaticResource VisiblityConverter}, Mode=OneWay}" VerticalAlignment="Center">
+                            <!--<TextBlock Text="További átszállások betöltése" HorizontalAlignment="Center"/>-->
+                            <ProgressBar Grid.Row="0" Height="10" IsIndeterminate="True" Margin="0,20,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <TextBlock Visibility="{Binding NoTransfer, Converter={StaticResource VisiblityConverter}, Mode=OneWay}" Text="{Binding Path=LocalizedResources.StopNoTransfers, Source={StaticResource LocalizedStrings}}" FontSize="25" Margin="10,-120,10,10" TextWrapping="Wrap"/>
+                </StackPanel>
+            </phone:LongListSelector.ListFooter>
+        </phone:LongListSelector>
+
+        <!--ContentPanel - place additional content here-->
+    </Grid>
+
+</phone:PhoneApplicationPage>

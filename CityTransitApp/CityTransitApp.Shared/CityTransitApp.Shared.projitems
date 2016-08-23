@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="SharedProjectFile_SccProperties">
+    <SharedProjectFile_ProjectGuid>{f74f5c8b-bc2a-48de-856d-e363d5a8492c}</SharedProjectFile_ProjectGuid>
+    <SharedProjectFile_SccProjectName>SAK</SharedProjectFile_SccProjectName>
+    <SharedProjectFile_SccAuxPath>SAK</SharedProjectFile_SccAuxPath>
+    <SharedProjectFile_SccLocalPath>SAK</SharedProjectFile_SccLocalPath>
+    <SharedProjectFile_SccProvider>SAK</SharedProjectFile_SccProvider>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>18bc7bba-1215-47ad-b5de-fcafa8dcc063</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CityTransitApp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\AutoCompleteBox.xaml.cs">
+      <DependentUpon>AutoCompleteBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\AsyncStoryboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\DateTimePicker.xaml.cs">
+      <DependentUpon>DateTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\LoopingSelector.xaml.cs">
+      <DependentUpon>LoopingSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\SimpleGridView.xaml.cs">
+      <DependentUpon>SimpleGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\SimpleListView.xaml.cs">
+      <DependentUpon>SimpleListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\StopPicker.xaml.cs">
+      <DependentUpon>StopPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Controllers\Maps\MapController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Controllers\Maps\PlanMapController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Controllers\Maps\StopMapController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Controllers\Maps\TripMapController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Converters\BoolToVisibilityConverted.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Converters\DateTimeOffsetConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Converters\FontConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Converters\PercentageConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Converters\StringFormatConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Converters\ToBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Converters\WidthConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Dialogs\DownloadDBDialog.xaml.cs">
+      <DependentUpon>DownloadDBDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Effects\Animations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Effects\ColoringEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Effects\HoverEffects.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Effects\RotateEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Effects\TiltEffectCustom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\ElementExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\MapMarkers\StopPopup.xaml.cs">
+      <DependentUpon>StopPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\RouteStopTile.xaml.cs">
+      <DependentUpon>RouteStopTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\PlanSettingsPart.xaml.cs">
+      <DependentUpon>PlanSettingsPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\SettingsPart.xaml.cs">
+      <DependentUpon>SettingsPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\MapMarkers\PlanItemPopup.xaml.cs">
+      <DependentUpon>PlanItemPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\MapMarkers\StopPushpin.xaml.cs">
+      <DependentUpon>StopPushpin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\MapMarkers\TripStopPopup.xaml.cs">
+      <DependentUpon>TripStopPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\RouteStopPanel.xaml.cs">
+      <DependentUpon>RouteStopPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\SearchPanels\CategoryTreeAdapter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\SearchPanels\CategoryTreeSelector.xaml.cs">
+      <DependentUpon>CategoryTreeSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\SearchPanels\ResultCounter.xaml.cs">
+      <DependentUpon>ResultCounter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\SearchPanels\RoutePanel.xaml.cs">
+      <DependentUpon>RoutePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\SearchPanels\StopPanel.xaml.cs">
+      <DependentUpon>StopPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\TabHeader.xaml.cs">
+      <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\TimeStopListItem.xaml.cs">
+      <DependentUpon>TimeStopListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\DateTimePickerPart.xaml.cs">
+      <DependentUpon>DateTimePickerPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\FavoritesPart.xaml.cs">
+      <DependentUpon>FavoritesPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\PlanDetailsPart.xaml.cs">
+      <DependentUpon>PlanDetailsPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\PlanningPart.xaml.cs">
+      <DependentUpon>PlanningPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\SearchResultPart.xaml.cs">
+      <DependentUpon>SearchResultPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\TimetableBody.xaml.cs">
+      <DependentUpon>TimetableBody.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Pages\PlanSettingsPage.xaml.cs">
+      <DependentUpon>PlanSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitElements\Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\AppInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Framework\PageStateBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Framework\PageStateManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Framework\PageStateManagerVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Framework\PageStateStack.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Migration\TransitBaseMigrator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Tools\AppTileUpdater.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Tools\FreeCores.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Tools\Logging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Tools\LongListBottomObserver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Tools\RouteGroupColors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Tools\AppTileCreater.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CityTransitServices\Tools\TemporaryFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ComponentFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\MessageDialogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\UniversalCompression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\UniversalCriptography.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\UniversalFileSystem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\UniversalDirections.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\UniversalHttpClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\UniversalResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\UniversalLocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\UniversalPersistentSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetPortableServicesImplementations\WindowsUniversalServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlannerComponentUniversalCpp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\Backup\DbBackup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\Backup\TableBackup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\BusinessLogic\Favorites.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\BusinessLogic\History.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\BusinessLogic\TileRegister.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\CountableHistoryEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\Entities\FavoriteEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\Entities\HistoryEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\Entities\PlanningHistoryEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\Entities\RecentEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\Entities\StopHistoryEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\Entities\TileEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\SQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\SQLiteAsync.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\UserBaseSQLiteComponent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBaseSQLite\UserBaseSQLiteContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\hu\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\AutoCompleteBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\DateTimePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\LoopingSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\SimpleGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\SimpleListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\BaseElements\StopPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\Dialogs\DownloadDBDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\MapMarkers\PlanItemPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\MapMarkers\StopPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\MapMarkers\StopPushpin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\MapMarkers\TripStopPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\RouteStopPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\RouteStopTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\SearchPanels\CategoryTreeSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\SearchPanels\ResultCounter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\SearchPanels\RoutePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\SearchPanels\StopPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\TabHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageElements\TimeStopListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\DateTimePickerPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\FavoritesPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\PlanDetailsPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\PlanningPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\PlanSettingsPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\SearchResultPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\SettingsPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\PageParts\TimetableBody.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\Pages\PlanSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)CityTransitElements\Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

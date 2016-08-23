@@ -1,0 +1,69 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CityTransitApp.WPSilverlight.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    xmlns:parts="clr-namespace:CityTransitApp.WPSilverlight.PageParts"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    Style="{StaticResource AppPageStyle}"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar ForegroundColor="{StaticResource AppMenuForegroundColor}" BackgroundColor="{StaticResource AppMenuBackgroundColor}">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="frissítés keresése" Click="Update_Clicked"/>
+                <shell:ApplicationBarMenuItem Text="beállítások" Click="Settings_Clicked"/>
+                <shell:ApplicationBarMenuItem Text="offline útvonaltervezés" Click="Buy_Clicked"/>
+            </shell:ApplicationBar.MenuItems>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/feature.search.png" Text="keresés" Click="Search_Clicked"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/map.centerme.png" Text="közelben" Click="Near_Clicked"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/map.mark.png" Text="térképen" Click="Map_Clicked"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/feature.settings.png" Text="tervezési beállítások" Click="SettingsButton_Click"/>
+            <!--<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/download.png" Text="frissítés" IsEnabled="False" Click="UpdateButton_Click"/>-->
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>-->
+
+        <!--<Border Height="119" Grid.RowSpan="3" VerticalAlignment="Top" BorderThickness="0,0,0,10" BorderBrush="#FF64782D"/>-->
+        <!--#FFD8EAA8-->
+
+        <!--<Image HorizontalAlignment="Right" Grid.RowSpan="2" VerticalAlignment="Top" Source="/Assets/Header.png" Height="114" Grid.Row="1" Visibility="Collapsed"/>-->
+
+        <!--<Border x:Name="TitlePanel" Grid.Row="1" BorderThickness="0,5,0,0" BorderBrush="{StaticResource AppBorderBrush}">
+            <c:AppTitlePanel HorizontalAlignment="Left" Margin="25,0,0,0"/>
+        </Border>
+        <Grid x:Name="ContentPanel" Margin="0">-->
+        <phone:Pivot x:Name="Pivot" SelectionChanged="Pivot_SelectionChanged" Foreground="{StaticResource AppForegroundBrush}">
+            <phone:PivotItem CacheMode="{x:Null}" Margin="0,10,0,0">
+                <phone:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.MainTabSchedules, Source={StaticResource LocalizedStrings}}" FontSize="50"/>
+                </phone:PivotItem.Header>
+                <parts:FavoritesTab x:Name="FavoritesTab"/>
+            </phone:PivotItem>
+            <phone:PivotItem CacheMode="{x:Null}" Margin="0,10,0,0">
+                <phone:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.MainTabPlanning, Source={StaticResource LocalizedStrings}}" FontSize="50"/>
+                </phone:PivotItem.Header>
+                <parts:PlanningTab x:Name="PlanningTab" />
+            </phone:PivotItem>
+        </phone:Pivot>
+        <!--</Grid>-->
+        <!--<UI:AdControl Grid.Row="3" ErrorOccurred="AdControl_ErrorOccurred" x:Name="AdControl" CountryOrRegion="hu" Keywords="budapest" Height="80" Width="480" VerticalAlignment="Bottom" IsAutoCollapseEnabled="True" IsAutoRefreshEnabled="True" Visibility="Collapsed" />-->
+
+    </Grid>
+    
+</phone:PhoneApplicationPage>

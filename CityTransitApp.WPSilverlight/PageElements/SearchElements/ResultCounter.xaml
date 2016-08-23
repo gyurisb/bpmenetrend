@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="CityTransitApp.WPSilverlight.PageElements.SearchElements.ResultCounter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:effects="clr-namespace:CityTransitApp.WPSilverlight.Effects"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource AppForegroundBrush}"
+    Style="{StaticResource AppControlStyle}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <toolkit:WrapPanel x:Name="LayoutRoot" Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
+        <Border x:Name="Stop" Tap="Stop_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="5" Visibility="{Binding IsStopVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="13,5" Orientation="Horizontal">
+                <TextBlock Text="&#xF041;" FontFamily="/CityTransitApp.WPSilverlight;component/Resources/FontAwesome.otf#FontAwesome" FontSize="45" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0" VerticalAlignment="Center"/>
+                <TextBlock FontSize="34" HorizontalAlignment="Center" Margin="5,0,0,0" VerticalAlignment="Center">
+                    <Run Text=" x" FontWeight="ExtraLight"/>
+                    <Run Text="{Binding StopCount, FallbackValue='0'}" FontWeight="SemiBold"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Subway" Tap="Subway_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="5" Visibility="{Binding IsMetroVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="4,5" Orientation="Horizontal">
+                <Grid Margin="0" VerticalAlignment="Center">
+                    <Ellipse HorizontalAlignment="Left" Height="57" Stroke="#FF164589" VerticalAlignment="Top" Width="57" StrokeThickness="5"/>
+                    <TextBlock Text="&#xF239;" FontFamily="/CityTransitApp.WPSilverlight;component/Resources/FontAwesome.otf#FontAwesome" FontSize="40" HorizontalAlignment="Center" Foreground="#FF164589" VerticalAlignment="Center"/>
+                </Grid>
+                <TextBlock FontSize="34" HorizontalAlignment="Center" Margin="5,0,0,0" VerticalAlignment="Center">
+                    <Run Text=" x" FontWeight="ExtraLight"/>
+                    <Run Text="{Binding MetroCount, FallbackValue=0}" FontWeight="SemiBold"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Train" Tap="Train_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="5" Visibility="{Binding IsTrainVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="13,5" Orientation="Horizontal">
+                <TextBlock Text="&#xF238;" FontFamily="/CityTransitApp.WPSilverlight;component/Resources/FontAwesome.otf#FontAwesome" FontSize="45" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0" VerticalAlignment="Center"/>
+                <TextBlock FontSize="34" HorizontalAlignment="Center" Margin="5,0,0,0" VerticalAlignment="Center">
+                    <Run Text=" x" FontWeight="ExtraLight"/>
+                    <Run Text="{Binding TrainCount, FallbackValue=0}" FontWeight="SemiBold"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Tram" Tap="Tram_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="5" Visibility="{Binding IsTramVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="7,5,8,5" Orientation="Horizontal">
+                <TextBlock Text="🚋"  FontSize="50" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0,-30,0,-20" FontFamily="Segoe UI Symbol" VerticalAlignment="Center"/>
+                <TextBlock FontSize="34" HorizontalAlignment="Center" Margin="5,0,0,0" VerticalAlignment="Center">
+                    <Run Text=" x" FontWeight="ExtraLight"/>
+                    <Run Text="{Binding TramCount, FallbackValue=0}" FontWeight="SemiBold"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Bus" Tap="Bus_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="5" Visibility="{Binding IsBusVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="13,5" Orientation="Horizontal">
+                <TextBlock Text="&#xF207;" FontFamily="/CityTransitApp.WPSilverlight;component/Resources/FontAwesome.otf#FontAwesome" FontSize="45" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0" VerticalAlignment="Center"/>
+                <TextBlock FontSize="34" HorizontalAlignment="Center" Margin="5,0,0,0" VerticalAlignment="Center">
+                    <Run Text=" x" FontWeight="ExtraLight"/>
+                    <Run Text="{Binding BusCount, FallbackValue=0}" FontWeight="SemiBold"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Ship" Tap="Ship_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="5" Visibility="{Binding IsFerryVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="7,5,6,5" Orientation="Horizontal">
+                <TextBlock Text="&#xf21a;" FontFamily="/CityTransitApp.WPSilverlight;component/Resources/FontAwesome.otf#FontAwesome" FontSize="45" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0" VerticalAlignment="Center"/>
+                <TextBlock FontSize="34" HorizontalAlignment="Center" Margin="5,0,0,0" VerticalAlignment="Center">
+                    <Run Text=" x" FontWeight="ExtraLight"/>
+                    <Run Text="{Binding FerryCount, FallbackValue=0}" FontWeight="SemiBold"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+    </toolkit:WrapPanel>
+</UserControl>

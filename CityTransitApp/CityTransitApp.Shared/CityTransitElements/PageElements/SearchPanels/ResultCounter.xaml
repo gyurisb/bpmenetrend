@@ -1,0 +1,72 @@
+﻿<UserControl
+    x:Class="CityTransitApp.CityTransitElements.PageElements.SearchPanels.ResultCounter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.CityTransitElements.PageElements.SearchPanels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:effects="using:CityTransitElements.Effects"
+    d:DesignHeight="300"
+    d:DesignWidth="770.647">
+
+    <StackPanel x:Name="LayoutRoot" Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
+        <Border x:Name="Stop" Tapped="Stop_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="3,3,4,3" Visibility="{Binding IsStopVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="11,4" Orientation="Horizontal">
+                <TextBlock Text="&#xF041;" FontFamily="/Assets/FontAwesome.otf#FontAwesome" FontSize="38" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0" VerticalAlignment="Center"/>
+                <TextBlock FontSize="29" HorizontalAlignment="Center" Margin="4,0,0,0" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}">
+                    <Run Text=" x" FontWeight="Thin"/>
+                    <Run Text="{Binding StopCount, FallbackValue='0'}" FontWeight="Normal"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Subway" Tapped="Subway_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="3,3,4,3" Visibility="{Binding IsMetroVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="3,4" Orientation="Horizontal">
+                <Grid Margin="0" VerticalAlignment="Center">
+                    <Ellipse HorizontalAlignment="Left" Height="48" Stroke="#FF164589" VerticalAlignment="Top" Width="48" StrokeThickness="5"/>
+                    <TextBlock Text="&#xF239;" FontFamily="/Assets/FontAwesome.otf#FontAwesome" FontSize="34" HorizontalAlignment="Center" Foreground="#FF164589" VerticalAlignment="Center"/>
+                </Grid>
+                <TextBlock FontSize="29" HorizontalAlignment="Center" Margin="4,0,0,0" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}">
+                    <Run Text=" x" FontWeight="Thin"/>
+                    <Run Text="{Binding MetroCount, FallbackValue=0}" FontWeight="Normal"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Train" Tapped="Train_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="3,3,4,3" Visibility="{Binding IsTrainVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="11,4" Orientation="Horizontal">
+                <TextBlock Text="&#xF238;" FontFamily="/Assets/FontAwesome.otf#FontAwesome" FontSize="38" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0" VerticalAlignment="Center"/>
+                <TextBlock FontSize="29" HorizontalAlignment="Center" Margin="4,0,0,0" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}">
+                    <Run Text=" x" FontWeight="Thin"/>
+                    <Run Text="{Binding TrainCount, FallbackValue=0}" FontWeight="Normal"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Tram" Tapped="Tram_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="3,3,4,3" Visibility="{Binding IsTramVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="6,4,7,4" Orientation="Horizontal">
+                <TextBlock Text="🚋"  FontSize="43" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0,-25,0,-17" FontFamily="Segoe UI Symbol" VerticalAlignment="Center"/>
+                <TextBlock FontSize="29" HorizontalAlignment="Center" Margin="4,0,0,0" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}">
+                    <Run Text=" x" FontWeight="Thin"/>
+                    <Run Text="{Binding TramCount, FallbackValue=0}" FontWeight="Normal"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Bus" Tapped="Bus_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="3,3,4,3" Visibility="{Binding IsBusVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="11,4" Orientation="Horizontal">
+                <TextBlock Text="&#xF207;" FontFamily="/Assets/FontAwesome.otf#FontAwesome" FontSize="38" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0" VerticalAlignment="Center"/>
+                <TextBlock FontSize="29" HorizontalAlignment="Center" Margin="4,0,0,0" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}">
+                    <Run Text=" x" FontWeight="Thin"/>
+                    <Run Text="{Binding BusCount, FallbackValue=0}" FontWeight="Normal"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border x:Name="Ship" Tapped="Ship_Tap" Background="{StaticResource AppSecondaryBackgroundBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="3,3,4,3" Visibility="{Binding IsFerryVisible, Converter={StaticResource VisiblityConverter}}" effects:RotateEffect.IsEnabled="True">
+            <StackPanel Margin="6,4,5,4" Orientation="Horizontal">
+                <TextBlock Text="&#xf21a;" FontFamily="/Assets/FontAwesome.otf#FontAwesome" FontSize="38" HorizontalAlignment="Center" Foreground="#FF164589" Margin="0" VerticalAlignment="Center"/>
+                <TextBlock FontSize="29" HorizontalAlignment="Center" Margin="4,0,0,0" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}">
+                    <Run Text=" x" FontWeight="Thin"/>
+                    <Run Text="{Binding FerryCount, FallbackValue=0}" FontWeight="Normal"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="CityTransitApp.Pages.HistoryItemPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:effects="using:CityTransitElements.Effects"
+    mc:Ignorable="d"
+    FontSize="25"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Light">
+    <!-- fontsize converted -->
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <Border Grid.Row="0" BorderThickness="0,3" BorderBrush="{Binding MainColor}">
+            <StackPanel Background="{Binding HeaderColor}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Background="{Binding RouteColor}" MinWidth="85">
+                        <TextBlock Text="{Binding RouteNumber}" Margin="10,15" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{Binding FontColor}" FontSize="34"/>
+                    </Border>
+                    <Border x:Name="BorderName" Grid.Column="1">
+                        <TextBlock x:Name="TextName" x:Uid="HistorySelectText" TextWrapping="Wrap" Margin="7,8,4,8" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </Grid>
+                <Border Tapped="Dir1_Tap" x:Name="Dir1Border">
+                    <TextBlock TextWrapping="Wrap" Margin="8">
+                        <Run Text="→ "/>
+                        <Run x:Name="Dir1Text"/>
+                    </TextBlock>
+                </Border>
+                <Border x:Name="Dir2Border" Tapped="Dir2_Tap">
+                    <TextBlock TextWrapping="Wrap" Margin="8">
+                        <Run Text="→ "/>
+                        <Run x:Name="Dir2Text"/>
+                    </TextBlock>
+                </Border>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" VerticalAlignment="Top" Margin="0" BorderThickness="0">
+            <TextBlock TextWrapping="Wrap" x:Uid="HistoryStopsLabel" HorizontalAlignment="Left" FontSize="23" Foreground="#FF232323" FontWeight="Bold" Margin="8"/>
+        </Border>
+        <!--ContentPanel - place additional content here-->
+        <ListView x:Name="ListView" SelectionChanged="List_SelectionChanged" Foreground="{StaticResource AppForegroundBrush}" Grid.Row="2" Style="{StaticResource StretchListStyle}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,0,0,0">
+                        <TextBlock Margin="8,0,0,13" VerticalAlignment="Center">
+                            <Run Text="&#9679; " FontSize="25"/>
+                            <Run Text="{Binding Name}" FontSize="25"/>
+                        </TextBlock>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

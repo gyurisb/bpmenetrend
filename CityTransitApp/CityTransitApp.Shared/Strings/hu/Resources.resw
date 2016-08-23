@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppDistanceUnit.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="ApplicationTitle.Text" xml:space="preserve">
+    <value>BP MENETREND</value>
+  </data>
+  <data name="AppLocationConsent.Text" xml:space="preserve">
+    <value>A készülék tartózkodási helyének segítésével megtalálhatóak a közelben lévő megállók, ezeket megtekintheti térképen és útvonalakat tervezhet innen. Engedélyezi a helyalapú szolgáltatások használatát az alkalmazásnak?</value>
+  </data>
+  <data name="AppLocationConsentDisable.Text" xml:space="preserve">
+    <value>Nem engedélyezem</value>
+  </data>
+  <data name="AppLocationConsentEnable.Text" xml:space="preserve">
+    <value>Engedélyezem</value>
+  </data>
+  <data name="AppLocationConsentTitle.Text" xml:space="preserve">
+    <value>Helyalapú szolgáltatások</value>
+  </data>
+  <data name="CardinalEast.Text" xml:space="preserve">
+    <value>kelet</value>
+  </data>
+  <data name="CardinalNorth.Text" xml:space="preserve">
+    <value>észak</value>
+  </data>
+  <data name="CardinalNorthEast.Text" xml:space="preserve">
+    <value>északkelet</value>
+  </data>
+  <data name="CardinalNorthWest.Text" xml:space="preserve">
+    <value>északnyugat</value>
+  </data>
+  <data name="CardinalSouth.Text" xml:space="preserve">
+    <value>dél</value>
+  </data>
+  <data name="CardinalSouthEast.Text" xml:space="preserve">
+    <value>délkelet</value>
+  </data>
+  <data name="CardinalSouthWest.Text" xml:space="preserve">
+    <value>délnyugat</value>
+  </data>
+  <data name="CardinalWest.Text" xml:space="preserve">
+    <value>nyugat</value>
+  </data>
+  <data name="DateTimeArrive.Text" xml:space="preserve">
+    <value>Érkezés</value>
+  </data>
+  <data name="DateTimeDeparture.Text" xml:space="preserve">
+    <value>Indulás</value>
+  </data>
+  <data name="DateTimeToday.Text" xml:space="preserve">
+    <value>ma</value>
+  </data>
+  <data name="DateTimeTomorrow.Text" xml:space="preserve">
+    <value>holnap</value>
+  </data>
+  <data name="DownloadDecompress.Text" xml:space="preserve">
+    <value>Letöltött fájlok kicsomagolása!</value>
+  </data>
+  <data name="DownloadLoadDB.Text" xml:space="preserve">
+    <value>Az adatbázis betöltése!</value>
+  </data>
+  <data name="DownloadNoAccess.Text" xml:space="preserve">
+    <value>Nem sikerült felvenni a kapcsolatot a szerverrel. Ellenőrizze, hogy csatlakozva van-e az internetre.</value>
+  </data>
+  <data name="DownloadProgress.Text" xml:space="preserve">
+    <value>Letöltve:</value>
+  </data>
+  <data name="DownloadReady.Text" xml:space="preserve">
+    <value>Az adatbázis készen áll!</value>
+  </data>
+  <data name="DownloadWaitDB.Text" xml:space="preserve">
+    <value>Várakozás az adatbázis betöltésére!</value>
+  </data>
+  <data name="HelpLabel.Label" xml:space="preserve">
+    <value>súgó az oldalhoz</value>
+  </data>
+  <data name="HelpStop.Text" xml:space="preserve">
+    <value>Ezen az oldalon találhatóak az induló járatok egy kiválasztott megállóból és annak közeléből.
+Jobb oldalon láthatja, hogy hány perc van a következő járat érkezéséig.
+Ha egy megálló/állomás sávjára kattint akkor megtekintheti azt a térképen is.</value>
+  </data>
+  <data name="HelpTimetable.Text" xml:space="preserve">
+    <value>Ezen az oldalon találhatóak az indulási idők egy kiválasztott útvonalon, megállóban és napon.
+Középen láthatja az indulási időket órák szerint csoportosítva.
+Ha rákoppint egy időpontra, elérheti a járat saját oldalát.
+Ha rákoppint a dátumra választhat egy másik napot.
+Ha rákoppont a járat címkére (második sor), akkor az oldal az ellentétes irányú járművek indulási idejeit fogja megjeleníteni.
+Ha rákoppint a megálló címkéjére, akkor választhat egy másik megállót az adott útvonalon.</value>
+  </data>
+  <data name="HelpTrip.Text" xml:space="preserve">
+    <value>Ezen az oldalon találhatóak az érkezési idejei egy kiválasztott járatnak.
+Átszállásokat találhat egy megállóra kattintással a listából.
+Kiválaszthatja a következő vagy előző járatokat a képernyő csúsztatásával vagy a felső sávból való választással.
+Valamint, ha a célállomás címkére kattint az oldal a következő ellentétes irányú járatot fogja megjeleníteni.</value>
+  </data>
+  <data name="HistorySelectText.Text" xml:space="preserve">
+    <value>Válasszon irányt vagy megállót!</value>
+  </data>
+  <data name="HistoryStopsLabel.Text" xml:space="preserve">
+    <value>GYAKORI</value>
+  </data>
+  <data name="MainContextDown.Text" xml:space="preserve">
+    <value>Le</value>
+  </data>
+  <data name="MainContextPin.Text" xml:space="preserve">
+    <value>Kitűzés a kezdőképernyőre</value>
+  </data>
+  <data name="MainContextRemove.Text" xml:space="preserve">
+    <value>Eltávolítás a kedvencekből</value>
+  </data>
+  <data name="MainContextUp.Text" xml:space="preserve">
+    <value>Fel</value>
+  </data>
+  <data name="MainDownloadDescr.Text" xml:space="preserve">
+    <value>Az alkalmazás működéséhez szükséges menetrend adatbázis még nincs letöltve. Koppintson a letöltéshez!</value>
+  </data>
+  <data name="MainDownloadDone.Text" xml:space="preserve">
+    <value>A frissítést befejeződött, az alkalmazást most újra kell indítani.</value>
+  </data>
+  <data name="MainDownloadProgress.Text" xml:space="preserve">
+    <value>Letöltés folyamatban.</value>
+  </data>
+  <data name="MainDownloadTitle.Text" xml:space="preserve">
+    <value>Letöltés</value>
+  </data>
+  <data name="MainFavorites.Text" xml:space="preserve">
+    <value>KEDVENCEK</value>
+  </data>
+  <data name="MainHistory.Text" xml:space="preserve">
+    <value>ELŐZMÉNYEK</value>
+  </data>
+  <data name="MainMenuCheckUpdate.Label" xml:space="preserve">
+    <value>frissítés keresése</value>
+  </data>
+  <data name="MainMenuFilter.Label" xml:space="preserve">
+    <value>tervezési beállítások</value>
+  </data>
+  <data name="MainMenuMap.Label" xml:space="preserve">
+    <value>térképen</value>
+  </data>
+  <data name="MainMenuNear.Label" xml:space="preserve">
+    <value>közelben</value>
+  </data>
+  <data name="MainMenuOfflinePlanning.Label" xml:space="preserve">
+    <value>offline tervezés megvásárlása</value>
+  </data>
+  <data name="MainMenuSearch.Label" xml:space="preserve">
+    <value>keresés</value>
+  </data>
+  <data name="MainMenuSettings.Label" xml:space="preserve">
+    <value>beállítások</value>
+  </data>
+  <data name="MainMenuUpdate.Label" xml:space="preserve">
+    <value>frissítés</value>
+  </data>
+  <data name="MainNearest.Text" xml:space="preserve">
+    <value>legközelebbi megálló</value>
+  </data>
+  <data name="MainProgressNoInternet.Text" xml:space="preserve">
+    <value>Nincs internetkapcsolat.</value>
+  </data>
+  <data name="MainProgressNoUpdate.Text" xml:space="preserve">
+    <value>Az adatbázis naprakész.</value>
+  </data>
+  <data name="MainRecent.Text" xml:space="preserve">
+    <value>MOSTANÁBAN BEZÁRT</value>
+  </data>
+  <data name="MainTabNoFavorites.Text" xml:space="preserve">
+    <value>Nincsenek kedvencek.</value>
+  </data>
+  <data name="MainTabPlanning.Text" xml:space="preserve">
+    <value>ÚTVONALTERVEZÉS</value>
+  </data>
+  <data name="MainTabSchedules.Text" xml:space="preserve">
+    <value>JÁRATOK</value>
+  </data>
+  <data name="MainTopOutOfDate.Text" xml:space="preserve">
+    <value>A menetrend elavult, frissítés letölthető!</value>
+  </data>
+  <data name="NearCancelButton.Text" xml:space="preserve">
+    <value>Mégsem</value>
+  </data>
+  <data name="NearLocationServices.Text" xml:space="preserve">
+    <value>Helyalapú szolgáltatások</value>
+  </data>
+  <data name="NearLocButton.Text" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="NearLocDescription.Text" xml:space="preserve">
+    <value>A funkció használatához engedélyeznie kell az alkalmazásnak a helyalapú szolgáltatások használtát a beállítások között.</value>
+  </data>
+  <data name="NearPageDistance.Text" xml:space="preserve">
+    <value>Távolság &lt; </value>
+  </data>
+  <data name="NearPageTitle.Text" xml:space="preserve">
+    <value>Közeli megállók</value>
+  </data>
+  <data name="NearUnavailable.Text" xml:space="preserve">
+    <value>Szolgáltatás nem elérhető</value>
+  </data>
+  <data name="NearUnavailableButton.Text" xml:space="preserve">
+    <value>Újra</value>
+  </data>
+  <data name="NearUnavailableDescr.Text" xml:space="preserve">
+    <value>A GPS nem érhető el, a közeli megállók keresése nem lehetséges.</value>
+  </data>
+  <data name="PlanDetailsRoute.Text" xml:space="preserve">
+    <value>% ➤ %</value>
+  </data>
+  <data name="PlanDetailsTitle.Text" xml:space="preserve">
+    <value>Útvonal részletek</value>
+  </data>
+  <data name="PlanDetailsToMap.Label" xml:space="preserve">
+    <value>térképen</value>
+  </data>
+  <data name="PlanDetailsTrip.Text" xml:space="preserve">
+    <value>% megálló</value>
+  </data>
+  <data name="PlanDetailsWait.Text" xml:space="preserve">
+    <value>várjon % percet</value>
+  </data>
+  <data name="PlanDetailsWalk.Text" xml:space="preserve">
+    <value>sétáljon % métert</value>
+  </data>
+  <data name="PlaningBtn.Text" xml:space="preserve">
+    <value>Tervezés</value>
+  </data>
+  <data name="PlanItemAt.Text" xml:space="preserve">
+    <value>itt:</value>
+  </data>
+  <data name="PlanItemFinish1.Text" xml:space="preserve">
+    <value>szálljon le a járatról</value>
+  </data>
+  <data name="PlanItemFinish2.Text" xml:space="preserve">
+    <value>és megérkezett a céljához</value>
+  </data>
+  <data name="PlanItemMidFinish2.Text" xml:space="preserve">
+    <value>majd szálljon át</value>
+  </data>
+  <data name="PlanItemMidStart1.Text" xml:space="preserve">
+    <value>szálljon fel a következő járatra</value>
+  </data>
+  <data name="PlanItemStart1.Text" xml:space="preserve">
+    <value>induljon el a következő járaton</value>
+  </data>
+  <data name="PlanItemStart2.Text" xml:space="preserve">
+    <value>utazzon % megállót</value>
+  </data>
+  <data name="PlanItemTo.Text" xml:space="preserve">
+    <value>➤</value>
+  </data>
+  <data name="PlanMenuMap.Text" xml:space="preserve">
+    <value>térképen !</value>
+  </data>
+  <data name="PlanningError.Text" xml:space="preserve">
+    <value>A tervezés sikertelen volt, kérjük próbálkozzon újra!</value>
+  </data>
+  <data name="PlanningFreeVersion.Text" xml:space="preserve">
+    <value>Az útvonaltervezés az alkalmazás ezen verziójában nem elérhető.</value>
+  </data>
+  <data name="PlanningInProgress.Text" xml:space="preserve">
+    <value>Amíg be nem fejeződött az előző útvonaltervezés nem lehet újat indítani!</value>
+  </data>
+  <data name="PlanningNoAccess.Text" xml:space="preserve">
+    <value>Nincs internetkapcsolat. Jelenleg az útvonaltervező funkció csak aktív interneteléréssel működik. Ha szeretne internetkapcsolat nélkül is útvonalat tervezni, akkor később koppintson a menüben az 'Offline útvonaltervezés' menüpontra és vásárolja meg a funkciót.</value>
+  </data>
+  <data name="PlanningNoResult.Text" xml:space="preserve">
+    <value>A kijelölt megállók között nem sikerült útvonalat találni.</value>
+  </data>
+  <data name="PlanningSourceEmpty.Text" xml:space="preserve">
+    <value>Ki kell választani a kiinduló állomást!</value>
+  </data>
+  <data name="PlanningTargetEmpty.Text" xml:space="preserve">
+    <value>Ki kell választani a célállomást!</value>
+  </data>
+  <data name="PlanningTimeLabel.Text" xml:space="preserve">
+    <value>Tervezés kész</value>
+  </data>
+  <data name="PlanningTopHeaderLine1.Text" xml:space="preserve">
+    <value>indulás: </value>
+  </data>
+  <data name="PlanningTopHeaderLine2.Text" xml:space="preserve">
+    <value>, érkezés:</value>
+  </data>
+  <data name="PlanningTrialExpired.Text" xml:space="preserve">
+    <value>Az útvonaltervezés funkció jelenleg nem érhető el, mert Ön alkalmazás próba verzióját használja és a próbaidő lejárt. A funkció használatához vásárolja meg a teljes verziót az Áruházból!</value>
+  </data>
+  <data name="PlanningWalk.Text" xml:space="preserve">
+    <value>Séta</value>
+  </data>
+  <data name="PlanSettingsAspect.Text" xml:space="preserve">
+    <value>Útvonaltervezés szempontja</value>
+  </data>
+  <data name="PlanSettingsCheckedType.Text" xml:space="preserve">
+    <value>Nem lehet mindegyik szempont kijelöletlen!</value>
+  </data>
+  <data name="PlanSettingsDisabled.Text" xml:space="preserve">
+    <value>akadálymentes útvonaltervezés</value>
+  </data>
+  <data name="PlanSettingsDisabledStopError.Text" xml:space="preserve">
+    <value>A BKK weboldalán kiadott hivatalos adatbázisban sajnos hiányosak az akadálymentes megállókkal kapcsolatos információk, ezért nem javasolt ennek a feltételnek a bejelölése, mert a tervezés valószínűleg nem fog útvonalat találni. Továbbra is be szeretné jelölni?</value>
+  </data>
+  <data name="PlanSettingsDisabledStops.Text" xml:space="preserve">
+    <value>Csak akadálymentes megállók</value>
+  </data>
+  <data name="PlanSettingsDisabledVehicles.Text" xml:space="preserve">
+    <value>Csak akadálymentes járművek</value>
+  </data>
+  <data name="PlanSettingsFastWalk.Text" xml:space="preserve">
+    <value>gyors</value>
+  </data>
+  <data name="PlanSettingsFastWalkValue.Text" xml:space="preserve">
+    <value>10 km/h</value>
+  </data>
+  <data name="PlanSettingsHelp.Text" xml:space="preserve">
+    <value>A kijelölt szempontok szerint fog végezni a tervező útvonalkeresést. Ha többet jelöl ki, akkor több tervezés fog párhuzamosan zajlani, ez kevesebb CPU maggal rendelkező készülékek esetén hosszabb idejű tervezést eredményezhet.
+A különböző eredmények külön sorokban, rendezve fognak megjelenni.</value>
+  </data>
+  <data name="PlanSettingsNormalWalk.Text" xml:space="preserve">
+    <value>normális</value>
+  </data>
+  <data name="PlanSettingsNormalWalkValue.Text" xml:space="preserve">
+    <value>5 km/h</value>
+  </data>
+  <data name="PlanSettingsPageTitle.Text" xml:space="preserve">
+    <value>útvonal beállítások</value>
+  </data>
+  <data name="PlanSettingsSlowWalk.Text" xml:space="preserve">
+    <value>lassú</value>
+  </data>
+  <data name="PlanSettingsSlowWalkValue.Text" xml:space="preserve">
+    <value>3 km/h</value>
+  </data>
+  <data name="PlanSettingsTime.Text" xml:space="preserve">
+    <value>Idő szerint</value>
+  </data>
+  <data name="PlanSettingsTransfer.Text" xml:space="preserve">
+    <value>Átszállások száma szerint</value>
+  </data>
+  <data name="PlanSettingsVehicles.Text" xml:space="preserve">
+    <value>engedélyezett járművek tervezéskor</value>
+  </data>
+  <data name="PlanSettingsWalk.Text" xml:space="preserve">
+    <value>Gyalog megtett távolság szerint</value>
+  </data>
+  <data name="PlanSettingsWalkSpeed.Text" xml:space="preserve">
+    <value>séta sebessége</value>
+  </data>
+  <data name="PlanTimeLabel.Text" xml:space="preserve">
+    <value> perc</value>
+  </data>
+  <data name="PlanTransferLabel.Text" xml:space="preserve">
+    <value> átszállás</value>
+  </data>
+  <data name="PlanWalkLabel.Text" xml:space="preserve">
+    <value> m séta</value>
+  </data>
+  <data name="ResourceFlowDirection.Text" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage.Text" xml:space="preserve">
+    <value>hu</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="RouteMenuCancel.Label" xml:space="preserve">
+    <value>mégsem</value>
+  </data>
+  <data name="RouteMenuOK.Label" xml:space="preserve">
+    <value>kész</value>
+  </data>
+  <data name="RoutePanelOutOfService.Text" xml:space="preserve">
+    <value>üzemen kívül</value>
+  </data>
+  <data name="RouteStopFromPost.Text" xml:space="preserve">
+    <value> állomásról</value>
+  </data>
+  <data name="RouteStopFromPre.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RouteStopToPost.Text" xml:space="preserve">
+    <value> felé</value>
+  </data>
+  <data name="RouteStopToPre.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SearchCatLabel1.Content" xml:space="preserve">
+    <value>Metró</value>
+  </data>
+  <data name="SearchCatLabel2.Content" xml:space="preserve">
+    <value>HÉV</value>
+  </data>
+  <data name="SearchCatLabel3.Content" xml:space="preserve">
+    <value>Villamos</value>
+  </data>
+  <data name="SearchCatLabel4.Content" xml:space="preserve">
+    <value>Trolibusz</value>
+  </data>
+  <data name="SearchCatLabel5.Content" xml:space="preserve">
+    <value>Busz</value>
+  </data>
+  <data name="SearchCatLabel6.Content" xml:space="preserve">
+    <value>Éjszakai</value>
+  </data>
+  <data name="SearchDefault.Text" xml:space="preserve">
+    <value>Keressen megállóra vagy járatra!</value>
+  </data>
+  <data name="SettingsAutoNear.Header" xml:space="preserve">
+    <value>Közeli megállók automatikus keresése</value>
+  </data>
+  <data name="SettingsAutoNearLabel.Text" xml:space="preserve">
+    <value>A szolgáltatással bekapcsolásával az alkalmazás minden induláskor igénybe veszi a helyalapú szolgáltatásokat.</value>
+  </data>
+  <data name="SettingsAutoUpdate.Header" xml:space="preserve">
+    <value>Frissítések automatikus keresése</value>
+  </data>
+  <data name="SettingsClearConfirm.Text" xml:space="preserve">
+    <value>Biztosan törölni szeretné a menetrend keresési előzményeit?</value>
+  </data>
+  <data name="SettingsClearHistory.Content" xml:space="preserve">
+    <value>Előzmények törlése</value>
+  </data>
+  <data name="SettingsLocationServices.Header" xml:space="preserve">
+    <value>Helyalapú szolgáltatások</value>
+  </data>
+  <data name="SettingsNo.Text" xml:space="preserve">
+    <value>Nem</value>
+  </data>
+  <data name="SettingsOff.Text" xml:space="preserve">
+    <value>Kikapcsolva</value>
+  </data>
+  <data name="SettingsOn.Text" xml:space="preserve">
+    <value>Bekapcsolva</value>
+  </data>
+  <data name="SettingsPageTitle.Text" xml:space="preserve">
+    <value>beállítások</value>
+  </data>
+  <data name="SettingsPerDay.Text" xml:space="preserve">
+    <value>naponta</value>
+  </data>
+  <data name="SettingsPerWeek.Text" xml:space="preserve">
+    <value>hetente</value>
+  </data>
+  <data name="SettingsPerXDay.Text" xml:space="preserve">
+    <value>% naponta</value>
+  </data>
+  <data name="SettingsRestartRequired.Text" xml:space="preserve">
+    <value>Az új téma az alkalmazás újraindítása után lesz látható.</value>
+  </data>
+  <data name="SettingsTheme.Header" xml:space="preserve">
+    <value>Téma</value>
+  </data>
+  <data name="SettingsUnderline.Header" xml:space="preserve">
+    <value>Alacsonypadlós járművek aláhúzása</value>
+  </data>
+  <data name="SettingsUnderlineDescr.Text" xml:space="preserve">
+    <value>A menetrendben az alacsonypadlós járművökhöz tartozó idők aláhúzva fognak megjelenni.</value>
+  </data>
+  <data name="SettingsUpdateInterval.Header" xml:space="preserve">
+    <value>Frissítés keresésének gyakorisága</value>
+  </data>
+  <data name="SettingsYes.Text" xml:space="preserve">
+    <value>Igen</value>
+  </data>
+  <data name="StopDistance.Text" xml:space="preserve">
+    <value>távolság: </value>
+  </data>
+  <data name="StopMapDepartures.Text" xml:space="preserve">
+    <value>indulások % után</value>
+  </data>
+  <data name="StopMapDistance.Text" xml:space="preserve">
+    <value>távolság % (% perc)</value>
+  </data>
+  <data name="StopMapPosition.Text" xml:space="preserve">
+    <value>az Ön érkezési helye</value>
+  </data>
+  <data name="StopMinute.Text" xml:space="preserve">
+    <value>perc)</value>
+  </data>
+  <data name="StopNearBtn.Text" xml:space="preserve">
+    <value>közeli átszállások</value>
+  </data>
+  <data name="StopNoTransfers.Text" xml:space="preserve">
+    <value>Nincsenek további megállók.</value>
+  </data>
+  <data name="StopPickerChoose.Text" xml:space="preserve">
+    <value>Válasszon megállót!</value>
+  </data>
+  <data name="StopTransfersCategory.Text" xml:space="preserve">
+    <value>KÖZELI MEGÁLLÓK</value>
+  </data>
+  <data name="StopTransfersLabel.Text" xml:space="preserve">
+    <value>átszállások ekkor: </value>
+  </data>
+  <data name="StringMinute.Text" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="StringMinutePl.Text" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="TileAlreadyDone.Text" xml:space="preserve">
+    <value>A kijelölt elemről már létrehozott egy csempét!</value>
+  </data>
+  <data name="TimetableChooseStop.Text" xml:space="preserve">
+    <value>Válasszon megállót!</value>
+  </data>
+  <data name="TimetableDirectionPost.Text" xml:space="preserve">
+    <value>felé</value>
+  </data>
+  <data name="TimetableDirectionPre.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TimetableFromPost.Text" xml:space="preserve">
+    <value>megállóból</value>
+  </data>
+  <data name="TimetableFromPre.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TimeTableLabelPost.Text" xml:space="preserve">
+    <value> indulások</value>
+  </data>
+  <data name="TimetableMenuAddFavs.Label" xml:space="preserve">
+    <value>+kedvenc</value>
+  </data>
+  <data name="TimetableMenuPin.Label" xml:space="preserve">
+    <value>kitűzés</value>
+  </data>
+  <data name="TimeTableNextDay.Text" xml:space="preserve">
+    <value>Következő napi</value>
+  </data>
+  <data name="TimeTablePreviousDay.Text" xml:space="preserve">
+    <value>Előző napi</value>
+  </data>
+  <data name="TimeTableThisDay.Text" xml:space="preserve">
+    <value>Kiválasztott napi</value>
+  </data>
+  <data name="TimeTableToday.Text" xml:space="preserve">
+    <value>Mai</value>
+  </data>
+  <data name="TimeTableTomorrow.Text" xml:space="preserve">
+    <value>Holnapi</value>
+  </data>
+  <data name="TimeTableYesterday.Text" xml:space="preserve">
+    <value>Tegnapi</value>
+  </data>
+  <data name="TipAddFavs.Text" xml:space="preserve">
+    <value>Tipp: Bármelyik menetrendet hozzáadhatja a kedvencekhez a menüsorban lévő ikonnal. A kezdőképernyőről később könnyen elérheti így az adott járatot.</value>
+  </data>
+  <data name="TipLiveTile.Text" xml:space="preserve">
+    <value>Tipp: Élőcsempe hozzáadásához tartsa nyomva a kedvencek közül azt az elemet, amelyet rögzíteni szeretne.</value>
+  </data>
+  <data name="TripMenuMap.Label" xml:space="preserve">
+    <value>térképen</value>
+  </data>
+  <data name="TripMenuTimetable.Label" xml:space="preserve">
+    <value>menetrend</value>
+  </data>
+  <data name="TripStopDistance.Text" xml:space="preserve">
+    <value>megálló távolsága</value>
+  </data>
+  <data name="TripTopButton.Text" xml:space="preserve">
+    <value>→ teljes menetrend</value>
+  </data>
+  <data name="TripTransferDistance.Text" xml:space="preserve">
+    <value>átszállás távolsága</value>
+  </data>
+  <data name="PinAlreadyDone.Text" xml:space="preserve">
+    <value>A kijelölt elemről már létrehozott egy csempét!</value>
+  </data>
+</root>

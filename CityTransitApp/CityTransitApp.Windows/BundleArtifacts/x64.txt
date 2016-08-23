@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Bence\Desktop\gct backups\GlobalCityTransit\GlobalCityTransit\CityTransitApp\CityTransitApp.Windows\bin\x64\Release\CityTransitApp.Windows_1.1.0.2_Bundle\CityTransitApp.Windows_1.1.0.2_x64.appx
+SymbolPackage=C:\Users\Bence\Desktop\gct backups\GlobalCityTransit\GlobalCityTransit\CityTransitApp\CityTransitApp.Windows\AppPackages\CityTransitApp.Windows_1.1.0.2_Test\CityTransitApp.Windows_1.1.0.2_x64.appxsym

@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="CityTransitApp.WPSilverlight.PageElements.SearchElements.RoutePanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Style="{StaticResource AppControlStyle}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="RouteTemplate">
+            <Border Tap="Route_Tap">
+                <Grid Margin="10,5,0,5" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text=" → "/>
+                    <TextBlock Text="{Binding Name}" FontSize="24" Grid.Column="1" TextTrimming="WordEllipsis"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Border x:Name="Root" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,2,0,0">
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border x:Name="NrBorder" Tap="Category_Tap" Background="{Binding T.BgColorBrush}" BorderThickness="0,0,2,0" BorderBrush="{StaticResource AppBorderBrush}"
+                    Width="{Binding T.MainName, Converter={StaticResource WidthConverter}, ConverterParameter='25-69', FallbackValue=69}" >
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock x:Name="NrText"  Foreground="{Binding T.FontColorBrush}"
+					    Text="{Binding T.ShortMainName, FallbackValue=260A}"  Margin="10,0" HorizontalAlignment="Center"
+                        FontSize="{Binding T.MainName, Converter={StaticResource FontConverter}, ConverterParameter=30, FallbackValue=22}"/>
+                    <TextBlock Text="{Binding T.Label}" Visibility="{Binding T.LabelVisibility, FallbackValue=Collapsed}" FontSize="19" HorizontalAlignment="Center" Foreground="{Binding T.FontColorBrush}"/>
+                </StackPanel>
+                <!--FontSize="30"-->
+            </Border>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="{Binding T.LongMainName}" Visibility="{Binding T.VeryLongNameVisiblity, FallbackValue=Collapsed}" FontSize="24" Foreground="{Binding T.MainColorBrush}" FontWeight="Bold" Margin="10,0,0,0" TextTrimming="WordEllipsis" Tap="Category_Tap"/>
+                <TextBlock Visibility="{Binding T.OutOfServiceVisibility}" Text="{Binding LocalizedResources.RoutePanelOutOfService, Source={StaticResource LocalizedStrings}}" FontSize="24" Margin="10" Foreground="{StaticResource AppPreviousForegroundBrush}"/>
+                <!--ElementName=*ParentElement*, Path=ActualWidth-->
+                <StackPanel x:Name="ContentPanel" Visibility="{Binding T.RoutesVisibility}">
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

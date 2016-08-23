@@ -1,0 +1,135 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CityTransitApp.WPSilverlight.TimetablePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    xmlns:parts="clr-namespace:CityTransitApp.WPSilverlight.PageParts"
+    xmlns:effects="clr-namespace:CityTransitApp.WPSilverlight.Effects"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    Style="{StaticResource AppPageStyle}">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+
+        <!--<DataTemplate x:Key="MinuteItemTemplate">
+            <Border Width="60" Background="{Binding BorderColor}">
+                <TextBlock Text="{Binding Time}" FontSize="25"
+                            Foreground="{Binding TextColor}"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HourGroupTemplate">
+            <Grid Loaded="saveFrameworkElement" Background="{Binding BackgroundColor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Background="{StaticResource AppHeaderBackgroundBrush}" Margin="0,0,12,0" Width="60">
+                    <TextBlock Text="{Binding Hour}" FontSize="25" Margin="10,5" Foreground="{StaticResource AppForegroundBrush}"/>
+                </Border>
+                <phone:LongListSelector Foreground="{StaticResource AppForegroundBrush}"
+                    LayoutMode="Grid"
+                    GridCellSize="60,60"
+                    Grid.Column="1"
+                    ItemsSource="{Binding Trips}"
+                    SelectionChanged="LongListSelector_SelectionChanged"
+                    ItemTemplate="{StaticResource MinuteItemTemplate}" />
+            </Grid>
+        </DataTemplate>-->
+
+    </phone:PhoneApplicationPage.Resources>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar ForegroundColor="{StaticResource AppMenuForegroundColor}" BackgroundColor="{StaticResource AppMenuBackgroundColor}">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="HelpMenuItem" Text="súgó az oldalhoz" Click="HelpMenuItem_Click"/>
+            </shell:ApplicationBar.MenuItems>
+            <shell:ApplicationBarIconButton x:Name="FavoriteMenuIcon" IconUri="/Assets/AppBar/favs.addto.png" Text="+kedvenc" Click="Favorite_Clicked"/>
+            <shell:ApplicationBarIconButton x:Name="PinMenuIcon" IconUri="/Assets/AppBar/pin.png" Text="kitűzés" Click="Pin_Clicked"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+
+    <Grid Background="{StaticResource AppBackgroundBrush}" x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="HeaderPanel" Background="{Binding Route.RouteGroup.T.PrimaryColorBrush}">
+            <!--<c:AppTitlePanel/>-->
+            <Border Height="60" BorderThickness="0,4,0,0" BorderBrush="{Binding Route.RouteGroup.T.SecondaryColorBrush}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Sunday" FontSize="30" Margin="0,10" Width="0"/>
+                    <toolkit:DatePicker Grid.Column="1" 
+        				x:Name="DateControl"  
+        				ValueChanged="DateControl_ValueChanged" 
+                        Value="{Binding SelectedDay, Mode=OneWay}"
+        				Background="{Binding RouteGroup.T.PrimaryColorBrush}" 
+        				Foreground="{StaticResource AppForegroundBrush}" 
+        				ValueStringFormat="{}{0:D}" 
+        				RenderTransformOrigin="0,0" 
+        				Margin="-16,-17,-17,-17" 
+        				BorderThickness="0" 
+        				VerticalAlignment="Top">
+                        <!--Height="{Binding ActualHeight, ConverterParameter=1.2, Converter={StaticResource PercentageConverter}, ElementName=DateControl}">-->
+                        <toolkit:DatePicker.RenderTransform>
+                            <CompositeTransform ScaleY="1.3" ScaleX="1.3"/>
+                        </toolkit:DatePicker.RenderTransform>
+                    </toolkit:DatePicker>
+                </Grid>
+            </Border>
+            <Border x:Name="NrBorder" Tap="RouteTapped" BorderThickness="0,2" BorderBrush="{StaticResource AppBorderBrush}" effects:ColoringEffect.ApplyOnTap="True">
+                <TextBlock TextTrimming="WordEllipsis" VerticalAlignment="Center" Margin="15,10,0,10" FontSize="30">
+        			<Run x:Name="RouteNRHeader" Text="{Binding Route.RouteGroup.Name}"/>
+        			<Run x:Uid="TimetableDirectionPre" FontWeight="Thin"/>
+        			<Run x:Name="RouteHeader" Text="{Binding Route.Name, Mode=OneWay}"/>
+        			<Run x:Uid="TimetableDirectionPost" FontWeight="Thin"/>
+                </TextBlock>
+            </Border>
+
+            <Border x:Name="StopBorder" Tap="StopTapped" BorderThickness="0,0,0,3" BorderBrush="{Binding Route.RouteGroup.T.SecondaryColorBrush}" effects:ColoringEffect.ApplyOnTap="True">
+                <TextBlock Margin="10,10,0,10" TextTrimming="WordEllipsis" FontSize="30">
+        			<Run x:Uid="TimetableFromPre" FontWeight="Thin" Text="From"/>
+        			<Run x:Name="StopHeader" Text="{Binding Stop.Name, Mode=OneWay}" />
+        			<Run x:Uid="TimetableFromPost" FontWeight="Thin"/>
+                </TextBlock>
+            </Border>
+            <!--<UI:AdControl x:Name="AdControl" ErrorOccurred="AdControl_ErrorOccurred" Height="80" Width="480" IsAutoCollapseEnabled="True" IsAutoRefreshEnabled="True" CountryOrRegion="hu" Visibility="Collapsed"/>-->
+        </StackPanel>
+
+        <Grid Grid.Row="1" x:Name="ContentRootPanel" Background="{StaticResource AppBackgroundBrush}">
+            <parts:TimetableBody x:Name="TimetableBody" DataSource="{Binding BodySource, Mode=OneWay}" ItemTapped="TimetableBody_ItemTapped" />
+            <ProgressBar x:Name="ProgressBar" IsIndeterminate="{Binding InProgress, Mode=OneWay}" VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

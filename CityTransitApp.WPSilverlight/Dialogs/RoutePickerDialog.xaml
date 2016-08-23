@@ -1,0 +1,94 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CityTransitApp.WPSilverlight.Dialogs.RoutePickerDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:elements="clr-namespace:CityTransitApp.WPSilverlight.PageElements"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Style="{StaticResource AppPageStyle}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="StopTemplate">
+            <elements:TimeStopListItem TimeClick="Item_TimeClicked" StopClick="Item_StopClicked"/>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar ForegroundColor="{StaticResource AppMenuForegroundColor}" BackgroundColor="{StaticResource AppMenuBackgroundColor}">
+            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Check.png" Text="kész" Click="Check_Clicked"/>
+            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Cancel.png" Text="mégsem" Click="Cancel_Clicked"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--ContentPanel - place additional content here-->
+        <Border Grid.Row="0" Margin="0" BorderBrush="{Binding BorderBackground}" BorderThickness="0,3" Background="{Binding RouteBackground}">
+            <StackPanel x:Name="HeaderPanel">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="NrBorder" MinWidth="110" Padding="5,0">
+                        <TextBlock Text="{Binding RouteNr, FallbackValue=XXX}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontSize="{Binding RouteNr, Converter={StaticResource FontConverter}, ConverterParameter=48, FallbackValue=48}"/>
+                    </Border>
+                    <Border Grid.Column="1">
+                        <TextBlock x:Name="TextName" Text="Járat neve" TextWrapping="Wrap" Margin="9,4,0,0" FontSize="20"/>
+                    </Border>
+                </Grid>
+                <Border x:Name="DirBorder" Tap="BtnDir_Tap" BorderThickness="0,2,0,0" BorderBrush="{StaticResource AppBorderBrush}">
+                    <Grid Height="52">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="BtnDir" Text="irány választás &lt;&gt;" Margin="9" FontSize="24" TextWrapping="Wrap"/>
+                        <TextBlock Grid.Column="1" Text="⇆" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="24"/>
+                    </Grid>
+                </Border>
+            </StackPanel>
+
+        </Border>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+            <phone:LongListSelector x:Name="ContentListView" ItemTemplate="{StaticResource StopTemplate}" Style="{StaticResource AppListStyle}"/>
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

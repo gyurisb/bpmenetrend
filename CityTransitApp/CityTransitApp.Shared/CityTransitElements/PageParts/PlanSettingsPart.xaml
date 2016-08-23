@@ -1,0 +1,59 @@
+﻿<UserControl
+    x:Class="CityTransitApp.CityTransitElements.PageParts.PlanSettingsPart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.CityTransitElements.PageParts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="628"
+    d:DesignWidth="492">
+
+
+    <StackPanel>
+        <TextBlock TextWrapping="Wrap" x:Uid="PlanSettingsWalkSpeed" Foreground="{StaticResource PhoneDisabledBrush}" Style="{ThemeResource GroupHeaderTextStyle}"/>
+        <Slider x:Name="WalkSpeedSlider" Grid.ColumnSpan="3" Maximum="10" ValueChanged="WalkSpeedSlider_ValueChanged" Value="{Binding WalkingSpeedSlider, Mode=TwoWay}" />
+        <Grid Margin="0,-30,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="&#x1F6B8;" FontFamily="Segoe UI Symbol" Grid.Column="0" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" FontSize="28" />
+            <TextBlock Text="&#128694;" FontFamily="Segoe UI Symbol" Grid.Column="1" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" FontSize="28" />
+            <TextBlock Text="&#127939;" FontFamily="Segoe UI Symbol" Grid.Column="2" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" FontSize="28" />
+            <TextBlock x:Uid="PlanSettingsSlowWalk" Grid.Column="0" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" Grid.Row="1" />
+            <TextBlock x:Uid="PlanSettingsNormalWalk" Grid.Column="1" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" Grid.Row="1" />
+            <TextBlock x:Uid="PlanSettingsFastWalk" Grid.Column="2" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" Grid.Row="1" />
+            <TextBlock x:Uid="PlanSettingsSlowWalkValue" Grid.Column="0" Foreground="{ThemeResource PivotHeaderForegroundUnselectedBrush}" HorizontalAlignment="Center" Grid.Row="2" />
+            <TextBlock x:Uid="PlanSettingsNormalWalkValue" Grid.Column="1" Foreground="{StaticResource PivotHeaderForegroundUnselectedBrush}" HorizontalAlignment="Center" Grid.Row="2" />
+            <TextBlock x:Uid="PlanSettingsFastWalkValue" Grid.Column="2" Foreground="{StaticResource PivotHeaderForegroundUnselectedBrush}" HorizontalAlignment="Center" Grid.Row="2" />
+        </Grid>
+
+        <Border Margin="0,20,0,0" >
+            <TextBlock TextWrapping="Wrap" x:Uid="PlanSettingsVehicles" Foreground="{StaticResource PhoneDisabledBrush}" Style="{ThemeResource GroupHeaderTextStyle}"/>
+        </Border>
+        <CheckBox x:Uid="SearchCatLabel1"  IsChecked="{Binding MetroAllowed, Mode=TwoWay}" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}"/>
+        <CheckBox x:Uid="SearchCatLabel2" IsChecked="{Binding UrbanTrainAllowed, Mode=TwoWay}" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}" />
+        <CheckBox x:Uid="SearchCatLabel3" IsChecked="{Binding TramAllowed, Mode=TwoWay}" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}"/>
+        <CheckBox x:Uid="SearchCatLabel5" IsChecked="{Binding BusAllowed, Mode=TwoWay}" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}"/>
+        <StackPanel x:Name="BarrierFreePanel">
+            <Grid Margin="0,20,0,0">
+                <TextBlock TextWrapping="Wrap" x:Uid="PlanSettingsDisabled" Foreground="{StaticResource PhoneDisabledBrush}" Style="{ThemeResource GroupHeaderTextStyle}"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="&#xF193;" FontFamily="/Assets/FontAwesome.otf#FontAwesome" Margin="0" Foreground="{StaticResource PhoneDisabledBrush}" FontSize="34"/>
+            </Grid>
+            <CheckBox Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}" IsChecked="{Binding WheelchairAccessibleTrips, Mode=TwoWay}">
+                <TextBlock TextWrapping="Wrap" x:Uid="PlanSettingsDisabledVehicles"/>
+            </CheckBox>
+            <CheckBox x:Name="WhStopBox" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}" IsChecked="{Binding WheelchairAccessibleStops, Mode=TwoWay}">
+                <TextBlock TextWrapping="Wrap" x:Uid="PlanSettingsDisabledStops"/>
+            </CheckBox>
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>

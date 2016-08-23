@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0832E046-C01D-4F90-A2A4-1653C162BB0A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TransitBaseTransformation</RootNamespace>
+    <AssemblyName>TransitBaseTransformation</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Json">
+      <HintPath>..\packages\JSON.1.0.1\lib\net40\Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="DbCreateTask.cs" />
+    <Compile Include="IGtfsDatabase.cs" />
+    <Compile Include="PostDbRepair.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StreetPathDataCollection\Config.cs" />
+    <Compile Include="StreetPathDataCollection\GoogleApi.cs" />
+    <Compile Include="StreetPathDataCollection\HereApi.cs" />
+    <Compile Include="StreetPathDataCollection\PathFinder.cs" />
+    <Compile Include="StreetPathDataCollection\Program.cs" />
+    <Compile Include="StreetPathDataCollection\ResponseObject.cs" />
+    <Compile Include="StreetPathDataCollection\RouteingApi.cs" />
+    <Compile Include="Tools\CSFileSystem.cs" />
+    <Compile Include="Tools\Web.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FastDatabaseLoader\FastDatabaseLoader.csproj">
+      <Project>{6bae430e-5c7e-4612-8ba0-af098f13e91c}</Project>
+      <Name>FastDatabaseLoader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FastDatabaseSaver\FastDatabaseSaver.csproj">
+      <Project>{27798e25-c44f-477a-8085-a2e221a06e98}</Project>
+      <Name>FastDatabaseSaver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NetPortableServices\NetPortableServices.csproj">
+      <Project>{fb13b557-64f9-4628-b0ba-c7d723d94a6a}</Project>
+      <Name>NetPortableServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransitBase\TransitBase.csproj">
+      <Project>{ec29015b-1760-405b-85f4-996d92b70a2e}</Project>
+      <Name>TransitBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,3 @@
+MainPackage=C:\Users\Bence\Desktop\gct backups\GlobalCityTransit\GlobalCityTransit\CityTransitApp\CityTransitApp.WindowsPhone\bin\ARM\Release\CityTransitApp.WindowsPhone_1.1.0.14_Bundle\CityTransitApp.WindowsPhone_1.1.0.14_ARM.appx
+SymbolPackage=C:\Users\Bence\Desktop\gct backups\GlobalCityTransit\GlobalCityTransit\CityTransitApp\CityTransitApp.WindowsPhone\AppPackages\CityTransitApp.WindowsPhone_1.1.0.14_Test\CityTransitApp.WindowsPhone_1.1.0.14_ARM.appxsym
+ResourcePack=C:\Users\Bence\Desktop\gct backups\GlobalCityTransit\GlobalCityTransit\CityTransitApp\CityTransitApp.WindowsPhone\bin\ARM\Release\CityTransitApp.WindowsPhone_1.1.0.14_Bundle\CityTransitApp.WindowsPhone_1.1.0.14_scale-140.appx

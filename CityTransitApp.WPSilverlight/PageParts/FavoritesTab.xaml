@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="CityTransitApp.WPSilverlight.PageParts.FavoritesTab"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:elements="clr-namespace:CityTransitApp.WPSilverlight.PageElements"
+    xmlns:effects="clr-namespace:CityTransitApp.WPSilverlight.Effects"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    Style="{StaticResource AppControlStyle}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="FavoriteTemplate">
+            <elements:RouteStopPanel Margin="5,0,5,5">
+                <toolkit:ContextMenuService.ContextMenu>
+                    <toolkit:ContextMenu x:Name="ContextMenu" >
+                        <toolkit:MenuItem 
+        					x:Name="RemoveFavorites"
+        					Header="{Binding Path=LocalizedResources.MainContextRemove, Source={StaticResource LocalizedStrings}}" 
+        					Click="RemoveFavorites_Click"/>
+                        <toolkit:MenuItem 
+        					x:Name="PinToStart"
+        					Header="{Binding Path=LocalizedResources.MainContextPin, Source={StaticResource LocalizedStrings}}" 
+        					Click="PinToStart_Click"/>
+                        <toolkit:MenuItem 
+        					Header="{Binding Path=LocalizedResources.MainContextUp, Source={StaticResource LocalizedStrings}}" 
+                            Click="FavUp_Click"/>
+                        <toolkit:MenuItem 
+        					Header="{Binding Path=LocalizedResources.MainContextDown, Source={StaticResource LocalizedStrings}}" 
+                            Click="FavDown_Click"/>
+                    </toolkit:ContextMenu>
+                </toolkit:ContextMenuService.ContextMenu>
+            </elements:RouteStopPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HistoryTemplate">
+            <Border Background="{Binding T.BgColorBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" Margin="3" Padding="0" effects:TiltEffectCustom.IsTiltEnabled="true">
+                <TextBlock Text="{Binding Name}" 
+                           Foreground="{Binding T.FontColorBrush}" 
+                           FontSize="{Binding Name, Converter={StaticResource FontConverter}, ConverterParameter=30}"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center"/>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <UserControl.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </UserControl.FontFamily>
+    <UserControl.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </UserControl.FontSize>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <StackPanel Visibility="{Binding FavoriteVisibility}">
+                <Border x:Name="NearPanel" BorderThickness="2" BorderBrush="{StaticResource AppBorderBrush}" Tap="NearPanel_Tap" Background="White" Margin="10,10,10,0" effects:RotateEffect.IsEnabled="true" CornerRadius="10" Visibility="Collapsed">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.RowSpan="2" Background="{Binding Colors[0], Converter={StaticResource BrushConverter}}" Width="14" CornerRadius="10,0,0,10"/>
+                        <Border Grid.Column="1" Grid.RowSpan="2" Background="{Binding Colors[1], Converter={StaticResource BrushConverter}}" Width="14"/>
+                        <Border Grid.Column="2" Grid.RowSpan="2"  Background="{Binding Colors[2], Converter={StaticResource BrushConverter}}" Width="14"/>
+                        <TextBlock Text="{Binding Path=LocalizedResources.MainNearest, Source={StaticResource LocalizedStrings}}" FontSize="25" Margin="10,0,0,0" Grid.Column="3"/>
+                        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" x:Name="NearText" Text="{Binding Name, FallbackValue='&lt;megálló neve&gt;'}" FontSize="30" Margin="10,0,0,10" FontWeight="Bold" Grid.Column="3" TextTrimming="WordEllipsis"/>
+                    </Grid>
+                </Border>
+                <TextBlock x:Name="FavoritesLabel" Text="{Binding LocalizedResources.MainFavorites, Source={StaticResource LocalizedStrings}}" FontSize="27" Foreground="#FF232323" FontWeight="Bold" Margin="10,0,10,10"/>
+                <TextBlock x:Name="NoFavoritesText" TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.MainTabNoFavorites, Source={StaticResource LocalizedStrings}}" Margin="10,10,0,10" FontSize="27"/>
+                <phone:LongListSelector x:Name="FavoriteList" 
+                                        ItemTemplate="{StaticResource FavoriteTemplate}"
+                                        SelectionChanged="FavoriteListView_SelectionChanged" 
+                                        Height="0"/>
+                <!--ListFooterTemplate="{StaticResource BorderTemplate}"-->
+                <TextBlock x:Name="HistoryLabel" Text="{Binding LocalizedResources.MainHistory, Source={StaticResource LocalizedStrings}}" FontSize="27" Foreground="#FF232323" Margin="10" FontWeight="Bold"/>
+                <phone:LongListSelector 
+                    x:Name="HistoryList"
+                    LayoutMode="Grid"
+                    GridCellSize="100,100"
+                    ItemTemplate="{StaticResource HistoryTemplate}"
+                    SelectionChanged="HistoryList_SelectionChanged" Height="0" Margin="10,0,0,0"/>
+                <TextBlock x:Name="RecentLabel" Text="{Binding LocalizedResources.MainRecent, Source={StaticResource LocalizedStrings}}" FontSize="27" Foreground="#FF232323" Margin="10" FontWeight="Bold"/>
+                <phone:LongListSelector 
+                    x:Name="RecentList"
+                    LayoutMode="Grid"
+                    GridCellSize="100,100"
+                    ItemTemplate="{StaticResource HistoryTemplate}"
+                    SelectionChanged="RecentList_SelectionChanged" Height="0" Margin="10,0,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

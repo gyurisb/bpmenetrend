@@ -1,0 +1,55 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CityTransitApp.WPSilverlight.Settings.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <ScrollViewer Background="{StaticResource PhoneBackgroundBrush}">
+        <StackPanel x:Name="LayoutRoot" Margin="12,0,12,0">
+            <TextBlock x:Name="BannerText" Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,17,0,0"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.SettingsPageTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextTitle1Style}" Margin="9,-7,0,28"/>
+
+            <toolkit:ListPicker Header="{Binding Path=LocalizedResources.SettingsTheme, Source={StaticResource LocalizedStrings}}" ItemsSource="{Binding ThemeValues}" SelectedItem="{Binding Theme, Mode=TwoWay}" Margin="12,12,12,10" Visibility="Collapsed"/>
+            <TextBlock x:Name="ThemeMsg" TextWrapping="Wrap"  Text="{Binding Path=LocalizedResources.SettingsRestartRequired, Source={StaticResource LocalizedStrings}}" Margin="0,0,0,20" Foreground="#FFA80000" Visibility="Collapsed"/>
+            <toolkit:ToggleSwitch x:Name="LocationSwitch" Header="{Binding Path=LocalizedResources.SettingsLocationServices, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding LocationServices, Mode=TwoWay}"/>
+            <toolkit:ToggleSwitch x:Name="NearSearchSwitch" Header="{Binding Path=LocalizedResources.SettingsAutoNear, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding AutomaticNearSearch, Mode=TwoWay}" IsEnabled="{Binding LocationServices, Mode=OneWay}"/>
+            <TextBlock TextWrapping="Wrap" Margin="0,-15,0,20" Text="{Binding Path=LocalizedResources.SettingsAutoNearLabel, Source={StaticResource LocalizedStrings}}" FontSize="18" Foreground="{StaticResource PhoneTextBoxBrush}"/>
+            <StackPanel x:Name="BarrierFreePanel">
+                <toolkit:ToggleSwitch x:Name="WheelchairSwitch" Header="{Binding Path=LocalizedResources.SettingsUnderline, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding WheelchairUnderlined, Mode=TwoWay}"/>
+                <TextBlock TextWrapping="Wrap" Margin="0,-15,0,20" Text="{Binding Path=LocalizedResources.SettingsUnderlineDescr, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource PhoneTextBoxBrush}" FontSize="18"/>
+            </StackPanel>
+            <toolkit:ToggleSwitch x:Name="ToggleSwitch" Header="{Binding Path=LocalizedResources.SettingsAutoUpdate, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding AutomaticUpdateCheck, Mode=TwoWay}"/>
+            <toolkit:ListPicker Header="{Binding Path=LocalizedResources.SettingsUpdateInterval, Source={StaticResource LocalizedStrings}}" IsEnabled="{Binding AutomaticUpdateCheck, Mode=OneWay}" ItemsSource="{Binding IntervalValues}" SelectedItem="{Binding AutomaticUpdateInterval, Mode=TwoWay}"/>
+            <Button Content="{Binding Path=LocalizedResources.SettingsClearHistory, Source={StaticResource LocalizedStrings}}" Margin="0,30,0,0" Click="ClearHistoryBtn_Clicked"/>
+
+        </StackPanel>
+
+    </ScrollViewer>
+
+</phone:PhoneApplicationPage>

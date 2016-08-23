@@ -1,0 +1,104 @@
+﻿<Page
+    x:Class="CityTransitApp.Pages.TripPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:elements="using:CityTransitApp.CityTransitElements.PageElements"
+    xmlns:effects="using:CityTransitElements.Effects"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Light">
+    <!-- fontsize converted -->
+
+    <Page.BottomAppBar>
+        <CommandBar Foreground="{StaticResource AppMenuForegroundBrush}" Background="{StaticResource AppMenuBackgroundBrush}">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="AllApps" x:Uid="TripMenuTimetable" Click="Timetable_Click"/>
+                <AppBarButton Icon="Map" x:Uid="TripMenuMap" Click="Map_Click"/>
+                <AppBarButton Icon="Favorite" x:Uid="TimetableMenuAddFavs" Click="Favorite_Clicked" x:Name="FavoriteMenuIcon"/>
+                <!--<AppBarButton Icon="Pin" x:Uid="TimetableMenuPin" Click="Pin_Clicked"/>-->
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="HelpLabel" Click="HelpMenuItem_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--ContentPanel - place additional content here-->
+        <Border Grid.Row="0" BorderBrush="{Binding Route.RouteGroup.T.MainColorBrush}" BorderThickness="0,3">
+            <StackPanel x:Name="HeaderPanel">
+                <elements:TabHeader DataSource="{Binding HeaderSource, Mode=OneWay}" 
+                                    Visibility="{Binding IsTimeStripVisible, Converter={StaticResource VisiblityConverter}, Mode=OneWay}"
+                                    BaseBrush="{Binding Route.RouteGroup.T.PrimaryColorBrush}"
+                                    SelectedBrush="{Binding Route.RouteGroup.T.SecondaryColorBrush}"
+                                    BaseForegroundBrush="{Binding Route.RouteGroup.T.SecondaryColorBrush}"
+                                    SelectedForegroundBrush="Black"
+                                    SelectedIndex="{Binding HeaderSelectedIndex, Mode=TwoWay}"
+                                    SelectionChanged="TabHeader_SelectionChanged"
+                                    x:Name="TabHeader" Margin="0,3,0,0"
+                                    />
+                <Grid Background="{Binding RouteGroup.T.SecondaryColorBrush}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Border MinWidth="93" Padding="5,0">
+                        <TextBlock Text="{Binding RouteName, Mode=OneTime}" 
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   FontSize="{Binding RouteName, Converter={StaticResource FontConverter}, ConverterParameter=41, FallbackValue=41}"/>
+                    </Border>
+                    <Border Grid.Column="1" Tapped="Direction_Tap">
+                        <TextBlock x:Name="HeadsignText" Margin="8,4" VerticalAlignment="Center" TextWrapping="Wrap" effects:RotateEffect.IsEnabled="{Binding HeadsignAnimates, Mode=OneWay}">
+    						<Run x:Uid="TimetableDirectionPre" FontSize="17"/>
+    						<Run x:Name="HeadsignHeader" Text="{Binding HeadsignText, Mode=OneWay}" FontSize="30"/>
+    						<Run x:Uid="TimetableDirectionPost" FontSize="17"/>
+                        </TextBlock>
+                    </Border>
+                    <TextBlock x:Name="WheelchairText" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="&#xf193;" FontFamily="/Assets/FontAwesome.otf#FontAwesome" Grid.Column="2" Margin="4,4,4,8" Width="29" Height="34" FontSize="30" Visibility="{Binding IsBarrierFree, Converter={StaticResource VisiblityConverter}, Mode=OneWay}"/>
+                </Grid>
+                <Border Background="{Binding RouteGroup.T.SecondaryColorBrush}">
+                    <TextBlock x:Name="TimeHeader" Text="10:00 - 12:00" Margin="8,0,0,0" FontSize="30" Visibility="Collapsed"/>
+                </Border>
+                <Grid x:Name="DistanceStripGrid" Height="36" Background="{Binding Route.RouteGroup.T.SecondaryColorBrush}" Visibility="{Binding IsDistanceVisible, Converter={StaticResource VisiblityConverter}, Mode=OneWay}">
+                    <TextBlock x:Name="AmPmText" Text="{Binding AmPmText, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Margin="17,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="DistanceText" Text="{Binding DistanceText, Mode=OneWay}" FontSize="20" HorizontalAlignment="Right" Foreground="{StaticResource AppForegroundBrush}" Margin="0,4,17,4"/>
+                </Grid>
+            </StackPanel>
+
+        </Border>
+
+        <!--ContentPanel - place additional content here-->
+        <ListView Grid.Row="1" 
+                  x:Name="ContentListView" 
+                  SelectionChanged="ContentListView_SelectionChanged" 
+                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                  ItemsSource="{Binding ItemsSource, Mode=OneWay}"
+                  HorizontalContentAlignment="Stretch"
+                  Style="{StaticResource StretchListStyle}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <elements:TimeStopListItem/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Pivot x:Name="ContentPivot" Grid.Row="1" Visibility="Collapsed" Margin="0,-12,0,0">
+            <PivotItem x:Name="PivotPage0" Margin="0">
+            </PivotItem>
+            <PivotItem x:Name="PivotPage1" Margin="0">
+            </PivotItem>
+            <PivotItem x:Name="PivotPage2" Margin="0">
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

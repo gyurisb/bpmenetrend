@@ -1,0 +1,234 @@
+﻿<UserControl
+    x:Class="CityTransitApp.CityTransitElements.PageParts.PlanDetailsPart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.CityTransitElements.PageParts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:base="using:CityTransitApp.CityTransitElements.BaseElements"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <!-- fontsize converted -->
+
+    <Grid Background="{StaticResource AppBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <!--<Border Grid.Row="0" Padding="12,17,0,28" Background="WhiteSmoke" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,3">
+            <StackPanel Margin="9,0,0,0" Orientation="Vertical">
+                <TextBlock Text="{Binding LocalizedResources.PlanDetailsTitle, Source={StaticResource LocalizedStrings}}" FontSize="30" Height="40" Visibility="Collapsed" />
+                <TextBlock FontSize="24" Foreground="{StaticResource AppForegroundBrush}">
+                    <Run Text="{Binding LocalizedResources.PlanningTopHeaderLine1, Source={StaticResource LocalizedStrings}}"/><Run
+                        Text="{Binding StartTimeTextLong}" FontWeight="Bold"/><Run
+                        Text="{Binding LocalizedResources.PlanningTopHeaderLine2, Source={StaticResource LocalizedStrings}}"/><Run
+                        Text="{Binding EndTimeTextLong}" FontWeight="Bold"/>
+                </TextBlock>
+                <TextBlock FontSize="24" Foreground="{StaticResource AppForegroundBrush}">
+                        <Run Text="{Binding TimeText}" FontWeight="Bold"/><Run 
+                            Text="{Binding TimeLabel}"/><Run Text=", "/><Run 
+                            Text="{Binding WalkText}" FontWeight="Bold"/><Run 
+                            Text="{Binding WalkLabel}"/><Run Text=", "/><Run 
+                            Text="{Binding TransferCount}" FontWeight="Bold"/><Run 
+                            Text="{Binding TransferLabel}"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>-->
+        <!--<ListView Grid.Row="1" x:Name="ContentList" Foreground="{StaticResource AppForegroundBrush}" FontSize="26" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionMode="None" Margin="12,0" Style="{StaticResource StretchListStyle}">-->
+        <base:SimpleListView Grid.Row="1" x:Name="ContentList" Foreground="{StaticResource AppForegroundBrush}" ContentPadding="12,0">
+            <base:SimpleListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- fejléc adatok -->
+                        <TextBlock Style="{ThemeResource PlanHeaderTextStyle}" Foreground="{StaticResource AppForegroundBrush}" Grid.ColumnSpan="3" Margin="17,25,8,0" TextWrapping="Wrap" Visibility="{Binding HasHeader, Converter={StaticResource VisiblityConverter}}">
+                            <Run x:Uid="PlanningTopHeaderLine1"/><Run
+                                Text="{Binding StartTimeTextLong}" FontWeight="Bold"/><Run
+                                x:Uid="PlanningTopHeaderLine2"/><Run
+                                Text="{Binding EndTimeTextLong}" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock Style="{ThemeResource PlanHeaderTextStyle}" Foreground="{StaticResource AppForegroundBrush}" Grid.Row="1" Grid.ColumnSpan="3" Margin="17,0,8,8" TextWrapping="Wrap" Visibility="{Binding HasHeader, Converter={StaticResource VisiblityConverter}}">
+                            <Run Text="{Binding TimeText}" FontWeight="Bold"/><Run 
+                                Text="{Binding TimeLabel}"/><Run Text=", "/><Run 
+                                Text="{Binding WalkText}" FontWeight="Bold"/><Run 
+                                Text="{Binding WalkLabel}"/><Run Text=", "/><Run 
+                                Text="{Binding TransferCount}" FontWeight="Bold"/><Run 
+                                Text="{Binding TransferLabel}"/>
+                        </TextBlock>
+
+                        <!-- kitöltés -->
+                        <Border Grid.Column="0" Grid.Row="2">
+                            <TextBlock Text="20:28" Style="{ThemeResource PlanTextStyle}" Foreground="Transparent" Margin="4,0,0,0"/>
+                        </Border>
+
+                        <!--kezdő megálló-->
+                        <Border Grid.Column="0" Grid.Row="2">
+                            <TextBlock Text="{Binding StartTimeText}" Style="{ThemeResource PlanTimeTextStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                        </Border>
+                        <Grid Grid.Column="1" Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.Row="1" Width="1" Stroke="#FF7A7A7A" StrokeThickness="2" HorizontalAlignment="Center"/>
+                        </Grid>
+                        <Ellipse Grid.Column="1" Fill="#FF7A7A7A" Height="17" Width="17" Margin="8,0" Grid.Row="2"/>
+                        <Border Grid.Column="2" Grid.Row="2">
+                            <TextBlock Text="{Binding StartStop.Name}" Margin="0,4" TextWrapping="Wrap" Style="{ThemeResource PlanTextStyle}"/>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </base:SimpleListView.HeaderTemplate>
+            <base:SimpleListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- kitöltés -->
+                        <Border Grid.Row="2" Grid.Column="0">
+                            <TextBlock Text="20:28" Foreground="Transparent" Margin="4,0,0,0" Style="{ThemeResource PlanTextStyle}"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.RowSpan="2" MinHeight="10"/>
+
+                        <!-- séta -->
+                        <Border Grid.Row="0" Grid.Column="1">
+                            <Rectangle Width="1" Stroke="#FF7A7A7A" StrokeThickness="2" HorizontalAlignment="Center" />
+                        </Border>
+                        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" Visibility="{Binding IsWalkVisible, Converter={StaticResource VisiblityConverter}}">
+                            <TextBlock Text="{Binding WalkText}" Margin="0,4,0,0" TextWrapping="Wrap" Style="{ThemeResource PlanTextStyle}"/>
+                        </StackPanel>
+
+                        <!-- várakozás -->
+                        <Border Grid.Row="1" Grid.Column="1">
+                            <Rectangle Width="1" Stroke="#FF7A7A7A" StrokeThickness="2" HorizontalAlignment="Center" />
+                        </Border>
+                        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" Visibility="{Binding IsWaitVisible, Converter={StaticResource VisiblityConverter}}">
+                            <TextBlock Text="{Binding WaitText}" Margin="0,0,0,4" TextWrapping="Wrap" Style="{ThemeResource PlanTextStyle}"/>
+                        </StackPanel>
+
+                        <!--Utazás háttér-->
+                        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="4" Background="{Binding RouteGroup.T.PrimaryColorBrush}" CornerRadius="10"/>
+
+                        <!-- utazás eleje -->
+                        <Border Grid.Row="2">
+                            <TextBlock Text="{Binding StartTimeText}" Style="{ThemeResource PlanTimeTextStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                        </Border>
+                        <Grid Grid.Row="2" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.Row="0" Width="1" Stroke="#FF7A7A7A" StrokeThickness="2" HorizontalAlignment="Center"/>
+                            <Rectangle Grid.Row="1" Width="1" Stroke="{Binding RouteGroup.T.MainColorBrush}" StrokeThickness="2" HorizontalAlignment="Center"/>
+                        </Grid>
+                        <Ellipse Grid.Row="2" Grid.Column="1" Fill="{Binding RouteGroup.T.MainColorBrush}" Height="17" Width="17" Margin="8,0"/>
+                        <Border Grid.Row="2" Grid.Column="2">
+                            <TextBlock Text="{Binding Entry.StartStop.Name}" Margin="0,4" TextWrapping="Wrap" Style="{ThemeResource PlanTextStyle}"/>
+                        </Border>
+
+                        <!-- utazás -->
+                        <Grid Grid.Row="3" Grid.Column="0" Grid.RowSpan="2">
+                            <TextBlock Text="{Binding RouteGroup.T.Icon, FallbackValue=&#xF239;}" Foreground="{Binding RouteGroup.T.MainColorBrush}" FontFamily="/Assets/FontAwesome.otf#FontAwesome" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,11,0" FontSize="22"/>
+                            <Ellipse Height="32" Width="32" Stroke="{Binding RouteGroup.T.MainColorBrush, FallbackValue=Black}" Visibility="{Binding IsMetro, FallbackValue=True, Converter={StaticResource VisiblityConverter}}" Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" StrokeThickness="3"/>
+                        </Grid>
+                        <Border Grid.Row="3" Grid.Column="1" Grid.RowSpan="2">
+                            <Rectangle Width="1" Stroke="{Binding RouteGroup.T.MainColorBrush}" StrokeThickness="2" HorizontalAlignment="Center" />
+                        </Border>
+                        <Border Grid.Row="3" Grid.Column="2">
+                            <TextBlock Text="{Binding RouteText}" Foreground="{StaticResource AppForegroundBrush}" Margin="0,4,0,0" TextWrapping="Wrap" Style="{ThemeResource PlanTextStyle}"/>
+                        </Border>
+                        <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal">
+                            <TextBlock Text="{Binding CountText}" FontStyle="Italic" Foreground="{StaticResource AppForegroundBrush}" Margin="0,0,0,4" TextWrapping="Wrap" Style="{ThemeResource PlanTextStyle}"/>
+                        </StackPanel>
+
+                        <!-- utazás vége -->
+                        <Border Grid.Row="5" >
+                            <TextBlock Text="{Binding EndTimeText}" Style="{ThemeResource PlanTimeTextStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                        </Border>
+                        <Grid Grid.Row="5" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.Row="0" Width="1" Stroke="{Binding RouteGroup.T.MainColorBrush}" StrokeThickness="2" HorizontalAlignment="Center"/>
+                            <Rectangle Grid.Row="1" Width="1" Stroke="#FF7A7A7A" StrokeThickness="2" HorizontalAlignment="Center"/>
+                        </Grid>
+                        <Ellipse Grid.Row="5" Grid.Column="1" Fill="{Binding RouteGroup.T.MainColorBrush}" Height="17" Width="17" Margin="8,0"/>
+                        <Border Grid.Row="5" Grid.Column="2">
+                            <TextBlock Text="{Binding Entry.EndStop.Name}" Margin="0,4" TextWrapping="Wrap" Style="{ThemeResource PlanTextStyle}"/>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </base:SimpleListView.ItemTemplate>
+            <base:SimpleListView.FooterTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- kitöltés -->
+                        <Border Grid.Row="1">
+                            <TextBlock Text="20:28" Foreground="Transparent" Margin="4,0,0,0" Style="{ThemeResource PlanTextStyle}"/>
+                        </Border>
+
+                        <!-- séta a végén -->
+                        <Border Grid.Row="0" Grid.Column="1">
+                            <Rectangle Width="1" Stroke="#FF7A7A7A" StrokeThickness="2" HorizontalAlignment="Center" Visibility="{Binding IsWalkAfterVisible, Converter={StaticResource VisiblityConverter}}"/>
+                        </Border>
+                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="0,4,0,0" TextWrapping="Wrap" Text="{Binding WalkAfterText}" Visibility="{Binding IsWalkAfterVisible, Converter={StaticResource VisiblityConverter}}" Style="{ThemeResource PlanTextStyle}"/>
+
+                        <!-- utolsó megálló -->
+                        <Border Grid.Row="1" Grid.Column="0">
+                            <TextBlock Text="{Binding EndTimeText}" Style="{ThemeResource PlanTimeTextStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                        </Border>
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.Row="0" Width="1" Stroke="#FF7A7A7A" StrokeThickness="2" HorizontalAlignment="Center"/>
+                        </Grid>
+                        <Ellipse Grid.Row="1" Grid.Column="1" Fill="#FF7A7A7A" Height="17" Width="17" Margin="8,0"/>
+                        <Border Grid.Row="1" Grid.Column="2">
+                            <TextBlock Text="{Binding EndStop.Name}" Margin="0,4" TextWrapping="Wrap" Style="{ThemeResource PlanTextStyle}"/>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </base:SimpleListView.FooterTemplate>
+        </base:SimpleListView>
+
+        <!--ContentPanel - place additional content here-->
+    </Grid>
+</UserControl>

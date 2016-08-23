@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{278F3967-EE24-4B3E-B79E-CB9EBCDC3C93}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CityTransitApp.WPSilverlight</RootNamespace>
+    <AssemblyName>CityTransitApp.WPSilverlight</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>hu</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>CityTransitApp.WPSilverlight_$(Configuration)_$(Platform).xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>CityTransitApp.WPSilverlight.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BaseElements\AutoCompleteBox.xaml.cs">
+      <DependentUpon>AutoCompleteBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BaseElements\DateTimePicker.xaml.cs">
+      <DependentUpon>DateTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BaseElements\StopPicker.xaml.cs">
+      <DependentUpon>StopPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ComponentFactory.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\PlanMapController.cs" />
+    <Compile Include="Controllers\StopMapController.cs" />
+    <Compile Include="Controllers\TripMapController.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverted.cs" />
+    <Compile Include="Converters\FontConverter.cs" />
+    <Compile Include="Converters\ToBrushConverter.cs" />
+    <Compile Include="Converters\WidthConverter.cs" />
+    <Compile Include="Dialogs\DateTimePickerDialog.xaml.cs">
+      <DependentUpon>DateTimePickerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DownloadDBDialog.xaml.cs">
+      <DependentUpon>DownloadDBDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\RoutePickerDialog.xaml.cs">
+      <DependentUpon>RoutePickerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Animations.cs" />
+    <Compile Include="Effects\ColoringEffect.cs" />
+    <Compile Include="Effects\RotateEffect.cs" />
+    <Compile Include="Effects\TiltEffectCustom.cs" />
+    <Compile Include="HistoryItemPage.xaml.cs">
+      <DependentUpon>HistoryItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MapPage.xaml.cs">
+      <DependentUpon>MapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NearPage.xaml.cs">
+      <DependentUpon>NearPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NetPortableServicesImplementations\MessageBoxService.cs" />
+    <Compile Include="NetPortableServicesImplementations\SilverlightCriptography.cs" />
+    <Compile Include="NetPortableServicesImplementations\SilverlightDirections.cs" />
+    <Compile Include="NetPortableServicesImplementations\SilverlightFastdbCompression.cs" />
+    <Compile Include="NetPortableServicesImplementations\SilverlightFileSystem.cs" />
+    <Compile Include="NetPortableServicesImplementations\SilverlightLocation.cs" />
+    <Compile Include="NetPortableServicesImplementations\SilverlightResources.cs" />
+    <Compile Include="NetPortableServicesImplementations\SilverlightUserIdentification.cs" />
+    <Compile Include="NetPortableServicesImplementations\WPSilverlightServices.cs" />
+    <Compile Include="PageElements\MapElements\PlanItemPopup.xaml.cs">
+      <DependentUpon>PlanItemPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageElements\MapElements\StopPushpin.xaml.cs">
+      <DependentUpon>StopPushpin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageElements\MapElements\TripStopPopup.xaml.cs">
+      <DependentUpon>TripStopPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageElements\RouteStopPanel.xaml.cs">
+      <DependentUpon>RouteStopPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageElements\SearchElements\CategoryTreeAdapter.cs" />
+    <Compile Include="PageElements\SearchElements\CategoryTreeSelector.xaml.cs">
+      <DependentUpon>CategoryTreeSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageElements\SearchElements\ResultCounter.xaml.cs">
+      <DependentUpon>ResultCounter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageElements\SearchElements\RoutePanel.xaml.cs">
+      <DependentUpon>RoutePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageElements\SearchElements\StopPanel.xaml.cs">
+      <DependentUpon>StopPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageElements\TabHeader.xaml.cs">
+      <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageElements\TimeStopListItem.xaml.cs">
+      <DependentUpon>TimeStopListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageParts\FavoritesTab.xaml.cs">
+      <DependentUpon>FavoritesTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageParts\PlanningTab.xaml.cs">
+      <DependentUpon>PlanningTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageParts\TimetableBody.xaml.cs">
+      <DependentUpon>TimetableBody.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlanDetailsPage.xaml.cs">
+      <DependentUpon>PlanDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlannerComponentWPSilverlightCpp.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\PlanSettingsPage.xaml.cs">
+      <DependentUpon>PlanSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StopPage.xaml.cs">
+      <DependentUpon>StopPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TimetablePage.xaml.cs">
+      <DependentUpon>TimetablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Extensions.cs" />
+    <Compile Include="Tools\LongListBottomObserver.cs" />
+    <Compile Include="Tools\LoopingDataSource.cs" />
+    <Compile Include="Tools\RouteGroupColors.cs" />
+    <Compile Include="Tools\TemplateSelector.cs" />
+    <Compile Include="Tools\Tiles.cs" />
+    <Compile Include="Tools\TilesApp.cs" />
+    <Compile Include="TripPage.xaml.cs">
+      <DependentUpon>TripPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="BaseElements\AutoCompleteBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BaseElements\DateTimePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BaseElements\StopPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\DateTimePickerDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\DownloadDBDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\RoutePickerDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HistoryItemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NearPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\MapElements\PlanItemPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\MapElements\StopPushpin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\MapElements\TripStopPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\RouteStopPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\SearchElements\CategoryTreeSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\SearchElements\ResultCounter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\SearchElements\RoutePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\SearchElements\StopPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\TabHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageElements\TimeStopListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageParts\FavoritesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageParts\PlanningTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageParts\TimetableBody.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlanDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\PlanSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StopPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TimetablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TripPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Assets\AppBar\back.png" />
+    <Content Include="Assets\AppBar\download.png" />
+    <Content Include="Assets\AppBar\favs.addto.png" />
+    <Content Include="Assets\AppBar\favs.removefrom.png" />
+    <Content Include="Assets\AppBar\feature.search.png" />
+    <Content Include="Assets\AppBar\feature.settings.png" />
+    <Content Include="Assets\AppBar\map.centerme.png" />
+    <Content Include="Assets\AppBar\map.direction.png" />
+    <Content Include="Assets\AppBar\map.mark.png" />
+    <Content Include="Assets\AppBar\pin.png" />
+    <Content Include="Assets\AppBar\transport.play.png" />
+    <Content Include="Assets\Categories\bus-co.png" />
+    <Content Include="Assets\Categories\bus-ny.png" />
+    <Content Include="Assets\Categories\Bus.png" />
+    <Content Include="Assets\Categories\LA\bus-express-light.png" />
+    <Content Include="Assets\Categories\LA\bus-local.png" />
+    <Content Include="Assets\Categories\LA\bus-rapid.png" />
+    <Content Include="Assets\Categories\LA\bus1.png" />
+    <Content Include="Assets\Categories\LA\rail.png" />
+    <Content Include="Assets\Categories\Metro.png" />
+    <Content Include="Assets\Categories\Night.png" />
+    <Content Include="Assets\Categories\subway.png" />
+    <Content Include="Assets\Categories\train.png" />
+    <Content Include="Assets\Categories\Tram.png" />
+    <Content Include="Assets\Categories\Troli.png" />
+    <Content Include="Assets\Categories\UrbanTrain.png" />
+    <Content Include="Assets\Header.png" />
+    <Content Include="Assets\TramIcon.png" />
+    <Content Include="Assets\Wheelchair.png" />
+    <Content Include="Assets\WheelchairInverse.png" />
+    <Content Include="Assets\WheelchairSmall.png" />
+    <Content Include="Assets\WhSmall.png" />
+    <Content Include="Assets\WhSmallInv.png" />
+    <Content Include="Resources\database-266.zip" />
+    <Resource Include="Resources\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.hu.resx" />
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CityTransitAgent.WPSilverlight\CityTransitAgent.WPSilverlight.csproj">
+      <Project>{52e2a22d-8499-46ae-a48e-f4324e9e331d}</Project>
+      <Name>CityTransitAgent.WPSilverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CityTransitApp.Common\CityTransitApp.Common.csproj">
+      <Project>{90a54291-a4c2-4920-a5b2-7a29c6b6061d}</Project>
+      <Name>CityTransitApp.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FastDatabaseLoader\FastDatabaseLoader.csproj">
+      <Project>{6bae430e-5c7e-4612-8ba0-af098f13e91c}</Project>
+      <Name>FastDatabaseLoader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NetPortableServices\NetPortableServices.csproj">
+      <Project>{fb13b557-64f9-4628-b0ba-c7d723d94a6a}</Project>
+      <Name>NetPortableServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlannerComponent.Interface\PlannerComponent.Interface.csproj">
+      <Project>{a520ad56-821e-4c36-86e0-e13efc629986}</Project>
+      <Name>PlannerComponent.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlannerComponent.WP80\PlannerComponent.WP80.vcxproj">
+      <Project>{e496eb70-212e-4b7d-898e-e81fbb3e8ed2}</Project>
+      <Name>PlannerComponent.WP80</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransitBase\TransitBase.csproj">
+      <Project>{ec29015b-1760-405b-85f4-996d92b70a2e}</Project>
+      <Name>TransitBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserBase.Interface\UserBase.Interface.csproj">
+      <Project>{882c27e6-940a-4f41-af21-cb52ca9392b2}</Project>
+      <Name>UserBase.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserBase.LinqToSQL\UserBase.LinqToSQL.csproj">
+      <Project>{1b29ea5b-fbd7-4b7b-a171-dda2566fa01f}</Project>
+      <Name>UserBase.LinqToSQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="MSAdvertising, Version=6.1">
+      <Name>Microsoft Advertising SDK for Windows Phone 8 %28XAML%29</Name>
+    </SDKReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

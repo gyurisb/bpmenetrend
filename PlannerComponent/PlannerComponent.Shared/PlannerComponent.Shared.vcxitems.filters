@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PlannerRuntimeComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Array2d.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Date.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DateTime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Distance.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Enumerable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ForwardGraph.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ForwardWay.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)GraphImpl.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphs.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)linq.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MyStdTypes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Planning.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PlanningAStar.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PositionStops.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Reverse.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ReverseGraph.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ReverseVertex.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ReverseWay.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ServiceCache.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stopper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)StopVertex.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Storage.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Table.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TimeSpan.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TripVertex.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)VertexArray.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Way.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)PlannerRuntimeComponent.cpp" />
+  </ItemGroup>
+</Project>

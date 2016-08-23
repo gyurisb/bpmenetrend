@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="CityTransitApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:parts="using:CityTransitApp.CityTransitElements.PageParts"
+    xmlns:search="using:CityTransitApp.CityTransitElements.PageElements.SearchPanels"
+    mc:Ignorable="d"
+    Foreground="Black"
+    RequestedTheme="Light">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="Header" Background="#FF151580">
+            <Button Height="0" Width="0" TabIndex="0"/>
+            <TextBlock x:Name="HeaderText" FontSize="25" Text="BP Menetrend" Margin="30,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,30,10" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <!--<search:CategoryTreeSelector x:Name="CategorySelector" VerticalAlignment="Bottom"/>-->
+                <SearchBox x:Name="SearchBox" Width="300" QueryChanged="SearchBox_QueryChanged" QuerySubmitted="SearchBox_QuerySubmitted" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+        <Frame Grid.Row="1" x:Name="ContentFrame" Padding="0,0,0,0">
+                
+        </Frame>
+    </Grid>
+</Page>

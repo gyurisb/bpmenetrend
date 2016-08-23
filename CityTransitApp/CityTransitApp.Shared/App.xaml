@@ -1,0 +1,120 @@
+﻿<Application
+    x:Class="CityTransitApp.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp"
+    xmlns:base="using:CityTransitApp.CityTransitElements.BaseElements"
+    xmlns:elements="using:CityTransitApp.CityTransitElements.PageElements"
+    xmlns:parts="using:CityTransitApp.CityTransitElements.PageParts"
+    xmlns:converters="using:CityTransitElements.Converters"
+    xmlns:effects="using:CityTransitElements.Effects"
+    >
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="CustomTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <SolidColorBrush x:Key="AppForegroundBrush" Color="Black"/>
+            <SolidColorBrush x:Key="AppPreviousForegroundBrush" Color="#FFB8B8B8"/>
+            <SolidColorBrush x:Key="AppEmptyForegroundBrush" Color="#FFB8B8B8"/>
+            <SolidColorBrush x:Key="AppBackgroundBrush" Color="White"/>
+            <SolidColorBrush x:Key="AppSecondaryBackgroundBrush" Color="WhiteSmoke"/>
+            <SolidColorBrush x:Key="AppHeaderBackgroundBrush" Color="#FFDADADA"/>
+            <SolidColorBrush x:Key="AppSecondaryHeaderBackgroundBrush" Color="DarkGray"/>
+            <SolidColorBrush x:Key="NextItemBacgroundBrush" Color="#FF82FF82"/>
+            <SolidColorBrush x:Key="StopBackgroundBrush" Color="#FFB4D3EE"/>
+            <SolidColorBrush x:Key="AppBtnColorBrush" Color="#FFB8B8B8"/>
+            <SolidColorBrush x:Key="AppFieldBrush" Color="White"/>
+            <SolidColorBrush x:Key="AppFieldForegroundBrush" Color="Black"/>
+            <SolidColorBrush x:Key="AppFieldForegroundBrush2" Color="#FFB8B8B8"/>
+            <SolidColorBrush x:Key="AppBorderBrush" Color="#FFE2E2E2"/>
+            <SolidColorBrush x:Key="NextBackgroundBrush" Color="Cyan"/>
+            <SolidColorBrush x:Key="BeforeForegroundBrush" Color="Gray"/>
+            <SolidColorBrush x:Key="TransparentBrush" Color="Transparent"/>
+
+
+            <SolidColorBrush x:Key="AppMenuForegroundBrush" Color="Black"/>
+            <SolidColorBrush x:Key="AppMenuBackgroundBrush" Color="#FFDEDFDE"/>
+
+            <DataTemplate x:Key="BorderTemplate">
+                <Border BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,2,0,0"/>
+            </DataTemplate>
+
+            <Style x:Key="AppPageStyle" TargetType="Page">
+                <Setter Property="Foreground" Value="{StaticResource AppForegroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource AppBackgroundBrush}"/>
+                <!--<Setter Property="shell:SystemTray.ForegroundColor" Value="White"/>
+                <Setter Property="shell:SystemTray.ForegroundColor" Value="Black"/>
+                <Setter Property="shell:SystemTray.IsVisible" Value="True"/>-->
+            </Style>
+            <Style x:Key="AppSearchPageStyle" TargetType="Page">
+                <Setter Property="Foreground" Value="{StaticResource AppForegroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource AppBackgroundBrush}"/>
+                <!--<Setter Property="shell:SystemTray.BackgroundColor" Value="WhiteSmoke"/>
+                <Setter Property="shell:SystemTray.ForegroundColor" Value="Black"/>
+                <Setter Property="shell:SystemTray.IsVisible" Value="True"/>-->
+            </Style>
+
+
+            <Style x:Key="AppControlStyle" TargetType="UserControl">
+                <Setter Property="Foreground" Value="{StaticResource AppForegroundBrush}"/>
+            </Style>
+
+            <Style x:Key="AppButtonStyle" TargetType="Button">
+                <Setter Property="Foreground" Value="{StaticResource AppForegroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource AppHeaderBackgroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource AppForegroundBrush}"/>
+            </Style>
+            <Style x:Key="AppDarkButtonStyle" TargetType="Button">
+                <Setter Property="Foreground" Value="{StaticResource AppForegroundBrush}"/>
+                <Setter Property="Background" Value="#FFB8B8B8"/>
+                <Setter Property="BorderBrush" Value="{StaticResource AppForegroundBrush}"/>
+            </Style>
+            <Style x:Key="AppSimpleButtonStyle" TargetType="Button">
+                <Setter Property="Foreground" Value="{StaticResource AppForegroundBrush}"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Margin" Value="0,-12"/>
+                <Setter Property="MinWidth" Value="0"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="Padding" Value="8"/>
+            </Style>
+
+            <Style x:Key="StretchListStyle" TargetType="ListView">
+                <Setter Property="ItemContainerStyle">
+                    <Setter.Value>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="DesktopListStyle" TargetType="ListView">
+                <Setter Property="ItemContainerStyle">
+                    <Setter.Value>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter Property="Margin" Value="-5,-5,-5,-3"/>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <converters:FontConverter x:Key="FontConverter"/>
+            <converters:WidthConverter x:Key="WidthConverter"/>
+            <converters:StringFormatConverter x:Key="StringConverter"/>
+            <converters:BoolToVisibilityConverted x:Key="VisiblityConverter"/>
+            <converters:DateTimeOffsetConverter x:Key="DateTimeOffsetConverter"/>
+            <converters:ToBrushConverter x:Key="BrushConverter"/>
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+
+
+</Application>

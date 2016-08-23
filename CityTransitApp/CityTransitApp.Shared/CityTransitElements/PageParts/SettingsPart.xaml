@@ -1,0 +1,58 @@
+﻿<UserControl
+    x:Class="CityTransitApp.CityTransitElements.PageParts.SettingsPart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.CityTransitElements.PageParts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="600"
+    d:DesignWidth="400">
+
+    <StackPanel>
+        <StackPanel x:Name="LocationPanel">
+            <ComboBox x:Uid="SettingsTheme"
+                      ItemsSource="{Binding ThemeValues}"
+                      SelectedItem="{Binding Theme, Mode=TwoWay}"
+                      Margin="12,12,12,10"
+                      Visibility="Collapsed"/>
+            <TextBlock x:Name="ThemeMsg"
+                       TextWrapping="Wrap"
+                       x:Uid="SettingsRestartRequired"
+                       Margin="0,0,0,20"
+                       Foreground="{ThemeResource PhoneMidBrush}"
+                       Visibility="Collapsed"/>
+            <ToggleSwitch x:Name="LocationSwitch"
+                          x:Uid="SettingsLocationServices"
+                          IsOn="{Binding LocationServices, Mode=TwoWay}"/>
+            <ToggleSwitch x:Name="NearSearchSwitch"
+                          x:Uid="SettingsAutoNear" 
+                          IsOn="{Binding AutomaticNearSearch, Mode=TwoWay}"
+                          IsEnabled="{Binding LocationServices, Mode=OneWay}"/>
+            <TextBlock TextWrapping="Wrap"
+                       Margin="0,0,0,20"
+                       x:Uid="SettingsAutoNearLabel"
+                       FontSize="18"
+                       Foreground="{ThemeResource PhoneMidBrush}"/>
+        </StackPanel>
+        <StackPanel x:Name="BarrierFreePanel">
+            <ToggleSwitch x:Name="WheelchairSwitch"
+                              x:Uid="SettingsUnderline" 
+                              IsOn="{Binding WheelchairUnderlined, Mode=TwoWay}"/>
+            <TextBlock TextWrapping="Wrap"
+                           Margin="0,0,0,20"
+                           x:Uid="SettingsUnderlineDescr"
+                           Foreground="{StaticResource PhoneMidBrush}" 
+                           FontSize="18"/>
+        </StackPanel>
+        <ToggleSwitch x:Name="ToggleSwitch"
+                          x:Uid="SettingsAutoUpdate" 
+                          IsOn="{Binding AutomaticUpdateCheck, Mode=TwoWay}"/>
+        <ComboBox x:Uid="SettingsUpdateInterval" 
+                      IsEnabled="{Binding AutomaticUpdateCheck, Mode=OneWay}" ItemsSource="{Binding IntervalValues}"
+                      SelectedItem="{Binding AutomaticUpdateInterval, Mode=TwoWay}"/>
+        <Button x:Uid="SettingsClearHistory" 
+                    Margin="0,30,0,0"
+                    Click="ClearHistoryBtn_Clicked" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+    </StackPanel>
+</UserControl>

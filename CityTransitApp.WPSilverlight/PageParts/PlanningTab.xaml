@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="CityTransitApp.WPSilverlight.PageParts.PlanningTab"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:base="clr-namespace:CityTransitApp.WPSilverlight.BaseElements"
+    xmlns:effects="clr-namespace:CityTransitApp.WPSilverlight.Effects"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Style="{StaticResource AppControlStyle}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="WayTemplate">
+            <Border BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,0,0,2" effects:RotateEffect.IsEnabled="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.Column="0" Grid.RowSpan="2" Fill="{Binding Colors[0], Converter={StaticResource BrushConverter}}"/>
+                    <Rectangle Grid.Column="1" Grid.RowSpan="2" Fill="{Binding Colors[1], Converter={StaticResource BrushConverter}}" />
+                    <Rectangle Grid.Column="2" Grid.RowSpan="2"  Fill="{Binding Colors[2], Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Grid.Column="3" Text="{Binding RoutesText}" FontSize="30" Foreground="{StaticResource AppForegroundBrush}" Margin="15,10,0,0" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="3" Grid.Row="1" Margin="15,0,0,10" FontSize="24" Foreground="{StaticResource AppForegroundBrush}">
+                        <Run Text="{Binding TimeText}" FontWeight="Bold"/><Run 
+                            Text="{Binding TimeLabel}"/><Run 
+                            Text=", "/><Run 
+                            Text="{Binding WalkText}" FontWeight="Bold"/><Run 
+                            Text="{Binding WalkLabel}"/><Run 
+                            Text=", "/><Run 
+                            Text="{Binding TransferCount}" FontWeight="Bold"/><Run 
+                            Text="{Binding TransferLabel}"/>
+                    </TextBlock>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <!--<ScrollViewer>-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="HeaderGrid" Background="{StaticResource AppHeaderBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border Background="{StaticResource AppHeaderBackgroundBrush}">
+                <TextBlock Text="↦ " FontSize="34" FontWeight="Bold" Height="46" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <base:StopPicker IsSource="True" x:Name="SourceText" SelectionChanged="StopText_ValueSet" Grid.Column="1" Margin="0,2,0,0"/>
+            <Border Grid.Row="1" Background="{StaticResource AppHeaderBackgroundBrush}">
+                <TextBlock Text="⇥ " TextWrapping="Wrap" FontSize="34" FontWeight="Bold" Height="46" Width="41" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <base:StopPicker IsSource="False" x:Name="TargetText" SelectionChanged="StopText_ValueSet" Grid.Row="1" Grid.Column="1" Margin="0"/>
+            <Button Content="↕" Style="{StaticResource AppDarkButtonStyle}" Grid.RowSpan="2" Grid.Column="3" Margin="-12,-12,-12,-10" Padding="10,5,10,6" BorderThickness="0" FontSize="36" Click="SwapStops_Click"/>
+            <Border Grid.Row="2" Background="{StaticResource AppHeaderBackgroundBrush}">
+                <TextBlock Text="📅 " TextWrapping="Wrap" FontSize="30" FontWeight="Bold" Height="40" Width="39" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Symbol"/>
+            </Border>
+            <base:DateTimePicker x:Name="DateTimePicker" Grid.Column="1" Grid.Row="2"  Margin="0"/>
+            <Button x:Name="StartBtnNative" Click="StartBtnNative_Click" Style="{StaticResource AppDarkButtonStyle}" Grid.Row="4" Margin="-12,-14,-12,-12" BorderThickness="0" Grid.ColumnSpan="3">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Path=LocalizedResources.PlaningBtn, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource AppForegroundBrush}"/>
+                    <!--<TextBlock Text=" BETA" Foreground="#FF818181"/>-->
+                </StackPanel>
+            </Button>
+        </Grid>
+        <ProgressBar x:Name="ProgressBar" Grid.Row="1"/>
+        <TextBlock x:Name="TimeText" TextWrapping="Wrap" FontSize="20" Grid.Row="2"/>
+        <Border x:Name="ResultBorder" Grid.Row="3" Height="0" Margin="0,5,0,0">
+            <phone:LongListSelector 
+                x:Name="ResultList" 
+                ListHeaderTemplate="{StaticResource BorderTemplate}"
+                ItemTemplate="{StaticResource WayTemplate}" 
+                SelectionChanged="ResultList_SelectionChanged" 
+                Style="{StaticResource AppListStyle}"/>
+        </Border>
+        <!--<Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="9*"/>
+            </Grid.ColumnDefinitions>
+            <toolkit:TimePicker x:Name="TimePicker" Grid.Column="1" Style="{StaticResource AppTimePickerStyle}" Margin="0"/>
+        </Grid>-->
+        <!--<StackPanel Orientation="Horizontal" Visibility="Collapsed">
+            <TextBlock Text="induló állomás" FontSize="24" FontWeight="Bold" VerticalAlignment="Center"/>
+        </StackPanel>
+        <toolkit:DatePicker x:Name="DatePicker" Grid.Column="1" Style="{StaticResource AppDatePickerStyle}" Margin="0" Grid.Row="2" Grid.ColumnSpan="2" Visibility="Collapsed"/>
+        <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+            <TextBlock Text="célállomás" TextWrapping="Wrap" FontSize="24" FontWeight="Bold" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+            <Border x:Name="StartTimeBorder" Tap="StartTimeBorder_Tap" VerticalAlignment="Center" Background="{StaticResource AppHeaderBackgroundBrush}" BorderThickness="2,2,2,0" BorderBrush="Black">
+                <TextBlock Text="indulás ideje" TextWrapping="Wrap" FontSize="24" FontWeight="Bold" Height="32" Width="143" Margin="10,5,10,7"/>
+            </Border>
+            <Border x:Name="EndTimeBorder" Tap="EndTimeBorder_Tap" VerticalAlignment="Center" Margin="0" BorderThickness="0,2,2,0" BorderBrush="Black">
+                <TextBlock Text="érkezés ideje" TextWrapping="Wrap" FontSize="24" Height="32" Width="145" Margin="10,5,10,7" FontWeight="Bold" Foreground="Black"/>
+            </Border>
+        </StackPanel>-->
+    </Grid>
+    <!--</ScrollViewer>-->
+</UserControl>

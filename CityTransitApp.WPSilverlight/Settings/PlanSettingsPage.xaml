@@ -1,0 +1,98 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CityTransitApp.WPSilverlight.Settings.PlanSettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar ForegroundColor="{StaticResource AppMenuForegroundColor}" BackgroundColor="{StaticResource AppMenuBackgroundColor}">
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/back.png" Text="kész" Click="Check_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock x:Name="BannerText" Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,17,0,0"/>
+                <TextBlock Text="{Binding LocalizedResources.PlanSettingsPageTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextTitle1Style}" Margin="9,-7,0,28"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.PlanSettingsWalkSpeed, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource PhoneDisabledBrush}" FontSize="22" Height="34" Width="470" Margin="10,5,10,0"/>
+                <Slider x:Name="WalkSpeedSlider" Grid.ColumnSpan="3" Maximum="10" ValueChanged="WalkSpeedSlider_ValueChanged" Value="{Binding WalkingSpeedSlider, Mode=TwoWay}" />
+                <Grid Margin="0,-30,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="&#x1F6B8;" FontFamily="Segoe UI Symbol" Grid.Column="0" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" FontSize="28" />
+                    <TextBlock Text="&#128694;" FontFamily="Segoe UI Symbol" Grid.Column="1" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" FontSize="28" />
+                    <TextBlock Text="&#127939;" FontFamily="Segoe UI Symbol" Grid.Column="2" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" FontSize="28" />
+                    <TextBlock Text="{Binding LocalizedResources.PlanSettingsSlowWalk, Source={StaticResource LocalizedStrings}}" Grid.Column="0" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" Grid.Row="1" />
+                    <TextBlock Text="{Binding LocalizedResources.PlanSettingsNormalWalk, Source={StaticResource LocalizedStrings}}" Grid.Column="1" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" Grid.Row="1" />
+                    <TextBlock Text="{Binding LocalizedResources.PlanSettingsFastWalk, Source={StaticResource LocalizedStrings}}" Grid.Column="2" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" Grid.Row="1" />
+                    <TextBlock Text="{Binding LocalizedResources.PlanSettingsSlowWalkValue, Source={StaticResource LocalizedStrings}}" Grid.Column="0" Foreground="{StaticResource PhoneSubtleBrush}" HorizontalAlignment="Center" Grid.Row="2" />
+                    <TextBlock Text="{Binding LocalizedResources.PlanSettingsNormalWalkValue, Source={StaticResource LocalizedStrings}}" Grid.Column="1" Foreground="{StaticResource PhoneSubtleBrush}" HorizontalAlignment="Center" Grid.Row="2" />
+                    <TextBlock Text="{Binding LocalizedResources.PlanSettingsFastWalkValue, Source={StaticResource LocalizedStrings}}" Grid.Column="2" Foreground="{StaticResource PhoneSubtleBrush}" HorizontalAlignment="Center" Grid.Row="2" />
+                </Grid>
+
+                <Border Margin="0,20,0,-10" >
+                    <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.PlanSettingsVehicles, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource PhoneDisabledBrush}" FontSize="22" Height="34" Width="470" Margin="10,5,10,0"/>
+                </Border>
+                <CheckBox Content="{Binding LocalizedResources.SearchCatLabel1, Source={StaticResource LocalizedStrings}}"  IsChecked="{Binding MetroAllowed, Mode=TwoWay}" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}"/>
+                <CheckBox Content="{Binding LocalizedResources.SearchCatLabel2, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding UrbanTrainAllowed, Mode=TwoWay}" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}" />
+                <CheckBox Content="{Binding LocalizedResources.SearchCatLabel3, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding TramAllowed, Mode=TwoWay}" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}"/>
+                <CheckBox Content="{Binding LocalizedResources.SearchCatLabel5, Source={StaticResource LocalizedStrings}}" IsChecked="{Binding BusAllowed, Mode=TwoWay}" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}"/>
+                <StackPanel x:Name="BarrierFreePanel">
+                    <Grid Margin="0,20,0,-10">
+                        <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.PlanSettingsDisabled, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource PhoneDisabledBrush}" FontSize="22" Margin="10,5,0,0"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="&#xF193;" FontFamily="/CityTransitApp.WPSilverlight;component/Resources/FontAwesome.otf#FontAwesome" Margin="0,0,10,0" Width="30" Height="35" Foreground="{StaticResource PhoneDisabledBrush}" FontSize="34"/>
+                    </Grid>
+                    <CheckBox Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}" IsChecked="{Binding WheelchairAccessibleTrips, Mode=TwoWay}">
+                        <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.PlanSettingsDisabledVehicles, Source={StaticResource LocalizedStrings}}"/>
+                    </CheckBox>
+                    <CheckBox x:Name="WhStopBox" Foreground="{StaticResource PhoneForegroundBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Background="{StaticResource PhoneBackgroundBrush}" IsChecked="{Binding WheelchairAccessibleStops, Mode=TwoWay}">
+                        <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.PlanSettingsDisabledStops, Source={StaticResource LocalizedStrings}}"/>
+                    </CheckBox>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+
+
+</phone:PhoneApplicationPage>

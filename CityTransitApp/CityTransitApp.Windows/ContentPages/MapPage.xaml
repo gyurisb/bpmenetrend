@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="CityTransitApp.ContentPages.MapPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.ContentPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:winRtMap="using:WinRtMap"
+    xmlns:tiles="using:WinRtMap.Tiles"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:b="using:WinRtMap.Behaviors"
+    xmlns:utils="using:WinRtMap.Utils"
+    xmlns:bing="using:Bing.Maps"
+    xmlns:map="using:MapControl"
+    mc:Ignorable="d">
+
+    <!--<winRtMap:Map Name="map" Background="Transparent" Heading="0" ZoomLevel="16" MapCenter="47.497853,19.040319">
+        <i:Interaction.Behaviors>
+            <b:TouchMapBehavior />
+        </i:Interaction.Behaviors>
+
+        <tiles:WebTileLayer />
+    </winRtMap:Map>-->
+    <Border>
+        <FlipView>
+            <FlipView.Items>
+                <FlipViewItem>Hello</FlipViewItem>
+                <FlipViewItem>Hali</FlipViewItem>
+                <FlipViewItem>Cso</FlipViewItem>
+            </FlipView.Items>
+        </FlipView>
+    </Border>
+</Page>

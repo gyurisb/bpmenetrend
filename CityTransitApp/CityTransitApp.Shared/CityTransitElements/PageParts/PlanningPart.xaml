@@ -1,0 +1,97 @@
+﻿<UserControl
+    x:Class="CityTransitApp.CityTransitElements.PageParts.PlanningPart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.CityTransitElements.PageParts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:elements="using:CityTransitApp.CityTransitElements.PageElements"
+    xmlns:effects="using:CityTransitElements.Effects"
+    xmlns:base="using:CityTransitApp.CityTransitElements.BaseElements"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <!-- fontsize converted -->
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="WayTemplate">
+            <Border BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="0,0,0,2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.Column="0" Grid.RowSpan="2" Fill="{Binding Colors[0], Converter={StaticResource BrushConverter}}"/>
+                    <Rectangle Grid.Column="1" Grid.RowSpan="2" Fill="{Binding Colors[1], Converter={StaticResource BrushConverter}}" />
+                    <Rectangle Grid.Column="2" Grid.RowSpan="2"  Fill="{Binding Colors[2], Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Grid.Column="3" Text="{Binding RoutesText}" FontSize="25" Foreground="{StaticResource AppForegroundBrush}" Margin="15,10,0,0" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="3" Grid.Row="1" Margin="15,0,0,10" FontSize="20" Foreground="{StaticResource AppForegroundBrush}">
+                        <Run Text="{Binding TimeText}" FontWeight="Bold"/><Run 
+                            Text="{Binding TimeLabel}"/><Run 
+                            Text=", "/><Run 
+                            Text="{Binding WalkText}" FontWeight="Bold"/><Run 
+                            Text="{Binding WalkLabel}"/><Run 
+                            Text=", "/><Run 
+                            Text="{Binding TransferCount}" FontWeight="Bold"/><Run 
+                            Text="{Binding TransferLabel}"/>
+                    </TextBlock>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="HeaderGrid" Background="{StaticResource AppHeaderBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border Background="{StaticResource AppHeaderBackgroundBrush}">
+                <TextBlock Text="↦ " FontSize="29" FontWeight="Bold" Height="39" Width="34" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <base:StopPicker IsSource="True" x:Name="SourceText" SelectionChanged="StopText_ValueSet" Grid.Column="1" Margin="0,2,0,0"/>
+            <Border Grid.Row="1" Background="{StaticResource AppHeaderBackgroundBrush}">
+                <TextBlock Text="⇥ " TextWrapping="Wrap" FontSize="29" FontWeight="Bold" Height="39" Width="34" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <base:StopPicker IsSource="False" x:Name="TargetText" SelectionChanged="StopText_ValueSet" Grid.Row="1" Grid.Column="1" Margin="0"/>
+            <Button Content="↕" Style="{StaticResource AppDarkButtonStyle}" Grid.RowSpan="2" Grid.Column="3" Margin="0,-10,0,-8" BorderThickness="0" FontSize="30" Click="SwapStops_Click" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="0"/>
+            <Border Grid.Row="2" Background="{StaticResource AppHeaderBackgroundBrush}">
+                <TextBlock Text="📅 " TextWrapping="Wrap" FontSize="25" FontWeight="Bold" Height="34" Width="34" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Symbol"/>
+            </Border>
+            <base:DateTimePicker x:Name="DateTimePicker" Grid.Column="1" Grid.Row="2"  Margin="0"/>
+            <Button x:Name="StartBtnNative" Click="StartBtnNative_Click" Style="{StaticResource AppDarkButtonStyle}" Grid.Row="4" Margin="0,-12,0,-10" BorderThickness="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TextBlock x:Uid="PlaningBtn" Foreground="{StaticResource AppForegroundBrush}"/>
+            </Button>
+        </Grid>
+        <ProgressBar x:Name="ProgressBar" Grid.Row="1"/>
+        <TextBlock x:Name="TimeText" TextWrapping="Wrap" FontSize="17" Grid.Row="2"/>
+        <Border x:Name="ResultBorder" Grid.Row="3" Height="0" Margin="0,5,0,0">
+            <ListView x:Name="ResultList" 
+                      HeaderTemplate="{StaticResource BorderTemplate}"
+                      ItemTemplate="{StaticResource WayTemplate}" 
+                      SelectionChanged="ResultList_SelectionChanged"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      Style="{StaticResource StretchListStyle}"/>
+        </Border>
+    </Grid>
+</UserControl>

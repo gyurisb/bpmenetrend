@@ -1,0 +1,70 @@
+﻿<UserControl
+    x:Class="CityTransitApp.CityTransitElements.PageElements.RouteStopPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CityTransitApp.CityTransitElements.PageElements"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <!-- fontsize converted -->
+
+    <Border x:Name="Root" Margin="0,0,0,-2" BorderThickness="0" RenderTransformOrigin="0.5,0.5" BorderBrush="{StaticResource AppBorderBrush}" Background="{Binding Route.RouteGroup.T.LightColorBrush}" CornerRadius="0">
+
+        <Grid Margin="0">
+            <!--Background="{Binding Route.RouteGroup.T.PrimaryColorBrush}"-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border x:Name="NrBorder" 
+                    Width="{Binding Route.RouteGroup.T.MainName, Converter={StaticResource WidthConverter}, ConverterParameter='21-58', FallbackValue=15}" 
+                    Background="{Binding Route.RouteGroup.T.BgColorBrush}" BorderBrush="{StaticResource AppBorderBrush}" BorderThickness="2" CornerRadius="0,0,0,0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock x:Name="NrText" Foreground="{Binding Route.RouteGroup.T.FontColorBrush}"
+					    Text="{Binding Route.RouteGroup.T.ShortMainName, FallbackValue='260A'}" HorizontalAlignment="Center"
+                        FontSize="{Binding Route.RouteGroup.T.MainName, Converter={StaticResource FontConverter}, ConverterParameter=25, FallbackValue=22}" />
+                    <TextBlock Text="{Binding Route.RouteGroup.T.Label}" Visibility="{Binding Route.RouteGroup.T.LabelVisibility, FallbackValue=Collapsed}" FontSize="16" HorizontalAlignment="Center" Foreground="{Binding Route.RouteGroup.T.FontColorBrush}"/>
+                </StackPanel>
+            </Border>
+            <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical">
+                <TextBlock FontSize="21" TextTrimming="WordEllipsis">
+                    <Run Text="{Binding Route.RouteGroup.T.LongMainName}" Foreground="{Binding Route.RouteGroup.T.MainColorBrush}" FontWeight="Bold"/><Run 
+                         x:Uid="RouteStopToPre" Foreground="#FFACACAC"/><Run
+                         Text="{Binding Route.Name}"/><Run 
+                         x:Uid="RouteStopToPost" Foreground="#FFACACAC"/>
+                </TextBlock>
+                <TextBlock FontSize="21" TextTrimming="WordEllipsis">
+                    <Run x:Uid="RouteStopFromPre"  Foreground="#FFACACAC"/><Run 
+                         Text="{Binding Stop.Name}" /><Run 
+                         x:Uid="RouteStopFromPost" Foreground="#FFACACAC"/>
+                </TextBlock>
+                <Grid x:Name="TimeStripGrid" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Margin="0,0,15,0" Visibility="{Binding AreNextVisibles[0], Converter={StaticResource VisiblityConverter}}">
+                        <TextBlock Text="{Binding NextTrips[0], Mode=OneWay}" FontSize="25"/>
+                    </Border>
+                    <Border Grid.Column="1" Margin="0,0,15,0" Visibility="{Binding AreNextVisibles[1], Converter={StaticResource VisiblityConverter}}">
+                        <TextBlock Text="{Binding NextTrips[1], Mode=OneWay}" FontSize="25" FontWeight="Bold"/>
+                    </Border>
+                    <Border Grid.Column="2" Margin="0,0,15,0" Visibility="{Binding AreNextVisibles[2], Converter={StaticResource VisiblityConverter}}">
+                        <TextBlock Text="{Binding NextTrips[2], Mode=OneWay}" FontSize="25"/>
+                    </Border>
+                    <Border Grid.Column="3" Margin="0,0,15,0" Visibility="{Binding AreNextVisibles[3], Converter={StaticResource VisiblityConverter}}">
+                        <TextBlock Text="{Binding NextTrips[3], Mode=OneWay}" FontSize="25"/>
+                    </Border>
+                    <Border Grid.Column="4" Visibility="{Binding AreNextVisibles[4], Converter={StaticResource VisiblityConverter}}">
+                        <TextBlock Text="{Binding NextTrips[4], Mode=OneWay}" FontSize="25"/>
+                    </Border>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
